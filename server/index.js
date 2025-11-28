@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-dotenv.config();
+const path = require('path');
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config(); // Fallback to default if needed
 
 const app = express();
 

@@ -21,13 +21,23 @@ if (!db) {
 }
 
 // Connect to MongoDB
-mongoose
-    .connect(db)
-    .then(() => console.log('MongoDB Connected successfully'))
-    .catch(err => {
-        console.error('MongoDB Connection Error:', err);
+const connectDB = async () => {
+    try {
+        console.log('Attempting to connect to MongoDB...');
+        console.log('URI:', db.replace(/:([^:@]+)@/, ':****@')); // Log URI with hidden password
+
+        await mongoose.connect(db);
+
+        console.log('MongoDB Connected successfully');
+    } catch (err) {
+        console.error('MongoDB Connection Error:', err.message);
+        console.error('Full Error:', err);
         console.error('Make sure your IP is whitelisted in MongoDB Atlas and MONGO_URI is correct.');
-    });
+        // process.exit(1); // Optional: Exit if DB fails
+    }
+};
+
+connectDB();
 
 // Routes
 app.get('/api/health', (req, res) => {

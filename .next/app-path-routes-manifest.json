@@ -1,0 +1,20 @@
+{
+  "/(auth)/login/page": "/login",
+  "/(auth)/signup/page": "/signup",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/auth/signup/route": "/api/auth/signup",
+  "/api/test-db/route": "/api/test-db",
+  "/community/page": "/community",
+  "/dashboard/page": "/dashboard",
+  "/lesson/[id]/page": "/lesson/[id]",
+  "/modules/page": "/modules",
+  "/onboarding/page": "/onboarding",
+  "/page": "/",
+  "/profile/page": "/profile",
+  "/tools/emi/page": "/tools/emi",
+  "/tools/investment/page": "/tools/investment",
+  "/tools/page": "/tools",
+  "/tools/scenario/page": "/tools/scenario"
+}

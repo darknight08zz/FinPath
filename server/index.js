@@ -48,6 +48,25 @@ app.get('/api/health', (req, res) => {
     });
 });
 
+app.get('/api/test-db', async (req, res) => {
+    try {
+        const state = mongoose.connection.readyState;
+        const states = {
+            0: 'disconnected',
+            1: 'connected',
+            2: 'connecting',
+            3: 'disconnecting',
+        };
+        res.json({
+            message: 'Database Connection Test',
+            state: states[state] || 'unknown',
+            connectionString: process.env.MONGO_URI ? 'Defined (Hidden)' : 'Undefined'
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
 

@@ -1,7 +1,15 @@
 {
+  "/(auth)/login/page": "app/(auth)/login/page.js",
   "/(auth)/signup/page": "app/(auth)/signup/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/auth/signup/route": "app/api/auth/signup/route.js",
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/auth/user/route": "app/api/auth/user/route.js",
+  "/api/user/xp/route": "app/api/user/xp/route.js",
+  "/community/page": "app/community/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/page": "app/page.js"
+  "/lesson/[id]/page": "app/lesson/[id]/page.js",
+  "/modules/page": "app/modules/page.js",
+  "/page": "app/page.js",
+  "/profile/page": "app/profile/page.js",
+  "/tools/page": "app/tools/page.js"
 }

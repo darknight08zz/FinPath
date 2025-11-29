@@ -568,6 +568,10 @@ body {
   top: 100%;
 }
 
+.left-4 {
+  left: 1rem;
+}
+
 .z-10 {
   z-index: 10;
 }

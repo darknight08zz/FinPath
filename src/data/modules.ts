@@ -293,10 +293,171 @@ export const lessons: { [key: number]: LessonStep[] } = {
             type: "complete",
             title: "Lesson Complete!",
             content: "Great job! You've learned the fundamental difference between gross and net income. This knowledge will help you create more accurate budgets.",
-            xpEarned: 50,
+            xpEarned: 150,
         },
     ],
-    // Placeholder content for other lessons to avoid errors, in a real app these would be fully populated
+    2: [
+        {
+            type: "intro",
+            title: "Demystifying Credit",
+            content: "Credit can be a powerful tool or a dangerous trap. In this lesson, we'll break down how credit works and how to make it work for you.",
+        },
+        {
+            type: "content",
+            title: "What is a Credit Score?",
+            content: "Your credit score is a three-digit number (usually between 300 and 850) that tells lenders how likely you are to repay debt. Think of it as your financial report card.\n\n• 720+: Excellent\n• 690-719: Good\n• 630-689: Fair\n• <629: Poor",
+        },
+        {
+            type: "content",
+            title: "What Makes Up Your Score?",
+            content: "Your FICO score is calculated based on five factors:\n\n1. Payment History (35%): Do you pay on time?\n2. Amounts Owed (30%): How much of your available credit are you using?\n3. Length of Credit History (15%): How long have you had credit?\n4. New Credit (10%): Have you opened many accounts recently?\n5. Credit Mix (10%): Do you have different types of credit?",
+        },
+        {
+            type: "quiz",
+            title: "Credit Quiz",
+            question: "Which factor has the biggest impact on your credit score?",
+            options: ["Total debt amount", "Payment history", "Number of credit cards", "Age"],
+            correctAnswer: 1,
+            explanation: "Payment history accounts for 35% of your score. Missing even one payment can significantly drop your score.",
+        },
+        {
+            type: "tip",
+            title: "Utilization Rule",
+            content: "Try to keep your credit utilization below 30%. If you have a $1,000 limit, try not to carry a balance of more than $300.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "You now understand the building blocks of credit. Use this knowledge to build a strong financial reputation!",
+            xpEarned: 200,
+        },
+    ],
+    3: [
+        {
+            type: "intro",
+            title: "The Art of Saving",
+            content: "Saving isn't just about spending less; it's about building security and freedom. Let's explore strategies to make saving effortless.",
+        },
+        {
+            type: "content",
+            title: "Pay Yourself First",
+            content: "Instead of saving what's left after spending, spend what's left after saving. Set up an automatic transfer to your savings account on payday.\n\nTreat your savings contribution like a mandatory bill that must be paid.",
+        },
+        {
+            type: "quiz",
+            title: "Strategy Check",
+            question: "What is the 'Pay Yourself First' method?",
+            options: [
+                "Buying something nice for yourself before paying bills",
+                "Saving a portion of income immediately upon receiving it",
+                "Paying off debts before buying groceries",
+                "Using a credit card for everything",
+            ],
+            correctAnswer: 1,
+            explanation: "It means prioritizing your savings goals by setting aside money as soon as you get paid, ensuring you actually save.",
+        },
+        {
+            type: "content",
+            title: "The Power of Automation",
+            content: "Willpower is a limited resource. Automation removes the need for willpower.\n\n• Auto-transfer to savings\n• Auto-invest in 401(k)/IRA\n• Auto-pay bills\n\nWhen you don't see the money in your checking account, you learn to live without it.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "By automating your savings, you're building wealth on autopilot. Great work!",
+            xpEarned: 150,
+        },
+    ],
+    4: [
+        {
+            type: "intro",
+            title: "Investing 101",
+            content: "Investing is how you make your money work for you. It's the key to building long-term wealth and beating inflation.",
+        },
+        {
+            type: "content",
+            title: "Risk vs. Reward",
+            content: "All investing involves risk. Generally, higher potential returns come with higher risk.\n\n• Cash: Low risk, low return (loses value to inflation)\n• Bonds: Medium risk, medium return\n• Stocks: Higher risk, higher potential return",
+        },
+        {
+            type: "content",
+            title: "Diversification",
+            content: "Don't put all your eggs in one basket. Diversification means spreading your money across different investments to reduce risk.\n\nIf one company fails, you don't lose everything because you own hundreds of others.",
+        },
+        {
+            type: "quiz",
+            title: "Investment Logic",
+            question: "Why is diversification important?",
+            options: [
+                "It guarantees high returns",
+                "It eliminates all fees",
+                "It reduces risk by spreading investments",
+                "It makes tax filing easier",
+            ],
+            correctAnswer: 2,
+            explanation: "Diversification protects your portfolio. If one sector crashes, others might rise or stay stable, smoothing out your returns.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "You've taken the first step into the world of investing. Remember: Time in the market beats timing the market.",
+            xpEarned: 250,
+        },
+    ],
+    5: [
+        {
+            type: "intro",
+            title: "Setting Financial Goals",
+            content: "A goal without a plan is just a wish. Let's learn how to set financial goals that you'll actually achieve.",
+        },
+        {
+            type: "content",
+            title: "SMART Goals",
+            content: "Make your goals SMART:\n\n• Specific: 'Save $5,000' vs 'Save money'\n• Measurable: Trackable progress\n• Achievable: Realistic for your income\n• Relevant: Aligns with your values\n• Time-bound: Has a deadline",
+        },
+        {
+            type: "quiz",
+            title: "Goal Check",
+            question: "Which is a SMART goal?",
+            options: [
+                "I want to be rich someday",
+                "I will save $10,000 for a down payment by Dec 31st",
+                "I will try to spend less on food",
+                "I need to invest more",
+            ],
+            correctAnswer: 1,
+            explanation: "This goal is Specific ($10k down payment), Measurable ($10k), Time-bound (Dec 31st), and presumably Achievable/Relevant.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "With SMART goals, you have a roadmap to success. Now go set your first target!",
+            xpEarned: 100,
+        },
+    ],
+    6: [
+        {
+            type: "intro",
+            title: "Mastering Your Money Mindset",
+            content: "Your beliefs about money drive your financial decisions. Let's explore how to cultivate a healthy money mindset.",
+        },
+        {
+            type: "content",
+            title: "Scarcity vs. Abundance",
+            content: "A scarcity mindset focuses on what you lack ('I'll never have enough'). An abundance mindset focuses on possibility ('How can I afford this?').\n\nShifting your language from 'I can't' to 'How can I' opens up creative solutions.",
+        },
+        {
+            type: "tip",
+            title: "Pause Before Purchase",
+            content: "Implement a 24-hour rule for non-essential purchases. This simple pause helps separate impulse from genuine need.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "Your mindset is the foundation of your financial house. Keep building positive beliefs!",
+            xpEarned: 150,
+        },
+    ],
     7: [
         {
             type: "intro",
@@ -321,6 +482,109 @@ export const lessons: { [key: number]: LessonStep[] } = {
             title: "Lesson Complete!",
             content: "You now have a solid framework for budgeting! Try applying this to your own income this month.",
             xpEarned: 100,
+        },
+    ],
+    8: [
+        {
+            type: "intro",
+            title: "Tracking Your Expenses",
+            content: "You can't manage what you don't measure. Tracking expenses is the diagnostic tool for your financial health.",
+        },
+        {
+            type: "content",
+            title: "Where Does It Go?",
+            content: "Small leaks sink great ships. That $5 daily coffee is $1,800 a year. Tracking helps you identify these leaks.\n\nUse an app, a spreadsheet, or a notebook. The method doesn't matter; consistency does.",
+        },
+        {
+            type: "quiz",
+            title: "Awareness Check",
+            question: "What is the primary benefit of tracking expenses?",
+            options: [
+                "It makes you feel guilty",
+                "It takes up free time",
+                "It creates awareness of spending habits",
+                "It stops you from spending entirely",
+            ],
+            correctAnswer: 2,
+            explanation: "Tracking creates awareness. Once you see where money is going, you can make conscious choices to redirect it.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "Knowledge is power. By tracking your spending, you regain control over your financial life.",
+            xpEarned: 120,
+        },
+    ],
+    9: [
+        {
+            type: "intro",
+            title: "Building an Emergency Fund",
+            content: "Life happens. The car breaks down, you lose a job, or a medical bill pops up. An emergency fund turns a disaster into an inconvenience.",
+        },
+        {
+            type: "content",
+            title: "How Much is Enough?",
+            content: "Aim for 3 to 6 months of essential living expenses. If your bare-bones monthly budget is $2,000, aim for $6,000 - $12,000.\n\nStart small: $1,000 is a great first milestone.",
+        },
+        {
+            type: "content",
+            title: "Where to Keep It?",
+            content: "Keep it liquid (accessible) but separate from your checking account. A High-Yield Savings Account (HYSA) is ideal because it earns interest while keeping the money safe.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "Your emergency fund is your financial shield. Start building it today!",
+            xpEarned: 100,
+        },
+    ],
+    10: [
+        {
+            type: "intro",
+            title: "Reading Your Credit Report",
+            content: "Your credit report contains the data that determines your score. Errors are common, so you need to know how to check it.",
+        },
+        {
+            type: "content",
+            title: "The Big Three",
+            content: "There are three major credit bureaus: Equifax, Experian, and TransUnion. You are entitled to a free report from each of them every year at AnnualCreditReport.com.",
+        },
+        {
+            type: "quiz",
+            title: "Fact Check",
+            question: "How often can you get a free credit report from the major bureaus?",
+            options: ["Once a lifetime", "Once a year", "Only when denied credit", "Every month"],
+            correctAnswer: 1,
+            explanation: "By law, you can access your report for free once every 12 months from each bureau.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "Regularly checking your report protects you from identity theft and errors. Mark your calendar!",
+            xpEarned: 200,
+        },
+    ],
+    11: [
+        {
+            type: "intro",
+            title: "Interest Rates Explained",
+            content: "Interest is the price of money. When you borrow, you pay it. When you save, you earn it.",
+        },
+        {
+            type: "content",
+            title: "APR vs. APY",
+            content: "• APR (Annual Percentage Rate): The cost of borrowing (e.g., credit cards, loans). Lower is better.\n• APY (Annual Percentage Yield): The return on savings. Higher is better.",
+        },
+        {
+            type: "content",
+            title: "Simple vs. Compound",
+            content: "Simple interest is calculated only on the principal. Compound interest is calculated on the principal PLUS accumulated interest.\n\nCompound interest works against you with debt, but for you with investing.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "Understanding interest rates helps you make smarter borrowing and saving decisions.",
+            xpEarned: 180,
         },
     ],
     12: [
@@ -354,6 +618,55 @@ export const lessons: { [key: number]: LessonStep[] } = {
             xpEarned: 200,
         },
     ],
+    13: [
+        {
+            type: "intro",
+            title: "Good Debt vs. Bad Debt",
+            content: "Not all debt is created equal. Some debt can help you build wealth, while other debt destroys it.",
+        },
+        {
+            type: "content",
+            title: "The Difference",
+            content: "• Good Debt: Used to buy assets that increase in value or generate income (e.g., mortgage, student loans for high-ROI degrees, business loans).\n• Bad Debt: Used to buy things that lose value (e.g., credit card debt for clothes, high-interest car loans).",
+        },
+        {
+            type: "quiz",
+            title: "Debt ID",
+            question: "Which of the following is typically considered 'bad debt'?",
+            options: ["A mortgage on a rental property", "A student loan for medical school", "Credit card debt for a vacation", "A small business loan"],
+            correctAnswer: 2,
+            explanation: "A vacation is an experience, not an asset. Financing it with high-interest debt is a wealth-destroying move.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "Leverage good debt carefully, and avoid bad debt whenever possible.",
+            xpEarned: 150,
+        },
+    ],
+    14: [
+        {
+            type: "intro",
+            title: "Consolidating Debt",
+            content: "Juggling multiple payments? Consolidation might simplify your life and save you money.",
+        },
+        {
+            type: "content",
+            title: "How it Works",
+            content: "Debt consolidation involves taking out one new loan to pay off multiple smaller debts. Ideally, the new loan has a lower interest rate than the average of your old debts.",
+        },
+        {
+            type: "tip",
+            title: "Warning",
+            content: "Consolidation solves the symptom, not the problem. If you consolidate credit card debt but keep spending on the cards, you'll end up in deeper trouble.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "Consolidation is a tool, not a cure. Use it wisely as part of a broader repayment plan.",
+            xpEarned: 250,
+        },
+    ],
     15: [
         {
             type: "intro",
@@ -376,5 +689,85 @@ export const lessons: { [key: number]: LessonStep[] } = {
             content: "Start investing now, even if it's a small amount. Time is your greatest asset.",
             xpEarned: 150,
         },
-    ]
+    ],
+    16: [
+        {
+            type: "intro",
+            title: "Stocks vs. Bonds",
+            content: "These are the two main building blocks of most investment portfolios. Let's understand the difference.",
+        },
+        {
+            type: "content",
+            title: "Stocks (Equity)",
+            content: "When you buy a stock, you own a tiny piece of a company. You profit if the company grows or pays dividends. Stocks are volatile but offer high long-term growth.",
+        },
+        {
+            type: "content",
+            title: "Bonds (Debt)",
+            content: "When you buy a bond, you are lending money to a government or company. They pay you interest in return. Bonds are generally safer than stocks but offer lower returns.",
+        },
+        {
+            type: "quiz",
+            title: "Risk Profile",
+            question: "If you are young and investing for retirement in 40 years, which asset class is typically recommended for growth?",
+            options: ["100% Cash", "Mostly Bonds", "Mostly Stocks", "Gold bars"],
+            correctAnswer: 2,
+            explanation: "Stocks have historically provided the highest returns over long periods, making them suitable for long-term goals despite short-term volatility.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "Balancing stocks and bonds allows you to manage risk while pursuing growth.",
+            xpEarned: 180,
+        },
+    ],
+    17: [
+        {
+            type: "intro",
+            title: "ETF Basics",
+            content: "Exchange Traded Funds (ETFs) have revolutionized investing for everyday people.",
+        },
+        {
+            type: "content",
+            title: "What is an ETF?",
+            content: "An ETF is a basket of securities (like stocks) that trades on an exchange. Buying one share of an S&P 500 ETF instantly gives you exposure to 500 of the largest US companies.",
+        },
+        {
+            type: "content",
+            title: "Why ETFs?",
+            content: "• Diversification: Instant spread of risk.\n• Low Cost: Often cheaper than mutual funds.\n• Simplicity: Buy and hold strategy.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "ETFs are a fantastic tool for building a diversified portfolio with minimal effort.",
+            xpEarned: 200,
+        },
+    ],
+    18: [
+        {
+            type: "intro",
+            title: "Understanding Risk Tolerance",
+            content: "Investing isn't just about math; it's about psychology. How much volatility can you handle?",
+        },
+        {
+            type: "content",
+            title: "Factors of Risk",
+            content: "1. Time Horizon: When do you need the money? (Longer = more risk capacity)\n2. Financial Capacity: Can you afford to lose money?\n3. Emotional Tolerance: Will you panic sell if the market drops 20%?",
+        },
+        {
+            type: "quiz",
+            title: "Self Check",
+            question: "If the stock market drops 20% tomorrow, what should a long-term investor do?",
+            options: ["Sell everything to prevent further loss", "Stick to the plan and do nothing (or buy more)", "Check their account every hour", "Complain on social media"],
+            correctAnswer: 1,
+            explanation: "Panic selling locks in losses. History shows markets recover over time. Sticking to the plan is key.",
+        },
+        {
+            type: "complete",
+            title: "Lesson Complete!",
+            content: "Knowing your risk tolerance helps you build a portfolio you can stick with, even when times get tough.",
+            xpEarned: 100,
+        },
+    ],
 };

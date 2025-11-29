@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -26,11 +27,25 @@ import { useAuth } from "@/context/AuthContext";
 
 const Dashboard = () => {
     const router = useRouter();
-    const { user } = useAuth();
+    const { user, isLoading, isAuthenticated } = useAuth();
     const userXP = user?.xp || 0;
     const userLevel = user?.level || 1;
     const nextLevelXP = userLevel * 500;
     const progress = (userXP / nextLevelXP) * 100;
+
+    useEffect(() => {
+        if (!isLoading && !isAuthenticated) {
+            router.push("/login");
+        }
+    }, [isLoading, isAuthenticated, router]);
+
+    if (isLoading) {
+        return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    }
+
+    if (!isAuthenticated) {
+        return null;
+    }
 
     return (
         <div className="min-h-screen bg-background">

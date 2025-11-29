@@ -30,17 +30,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const storedToken = localStorage.getItem('token');
-        if (storedToken) {
-            setToken(storedToken);
-        }
-    }, []);
-
-    useEffect(() => {
-        const loadUser = async () => {
-            if (token) {
+        const initAuth = async () => {
+            const storedToken = localStorage.getItem('token');
+            if (storedToken) {
+                setToken(storedToken);
                 try {
-                    api.defaults.headers.common['x-auth-token'] = token;
+                    // Set header for this request (interceptor handles others, but good to be explicit for initial load)
+                    api.defaults.headers.common['x-auth-token'] = storedToken;
                     const res = await api.get('/auth/user');
                     setUser(res.data);
                 } catch (err) {
@@ -48,13 +44,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     localStorage.removeItem('token');
                     setToken(null);
                     setUser(null);
+                    delete api.defaults.headers.common['x-auth-token'];
                 }
             }
             setIsLoading(false);
         };
 
-        loadUser();
-    }, [token]);
+        initAuth();
+    }, []);
 
     const login = async (email: string, password: string) => {
         try {

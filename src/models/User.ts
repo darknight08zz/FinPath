@@ -28,6 +28,30 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 1,
     },
+    completedLessons: {
+        type: [Number],
+        default: [],
+    },
+    currentLesson: {
+        type: Number,
+        default: 1,
+    },
+    budgetChallenge: {
+        isActive: {
+            type: Boolean,
+            default: false,
+        },
+        startDate: {
+            type: Date,
+        },
+        lastCheckIn: {
+            type: Date,
+        },
+        daysCompleted: {
+            type: Number,
+            default: 0,
+        },
+    },
     badges: [
         {
             type: String,
@@ -38,5 +62,10 @@ const UserSchema = new mongoose.Schema({
         default: Date.now,
     },
 });
+
+// Force model recompilation in dev to pick up schema changes
+if (process.env.NODE_ENV === 'development') {
+    delete mongoose.models.User;
+}
 
 export default mongoose.models.User || mongoose.model('User', UserSchema);

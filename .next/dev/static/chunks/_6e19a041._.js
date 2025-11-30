@@ -1131,7 +1131,7 @@ var _s = __turbopack_context__.k.signature();
 const Modules = ()=>{
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    const { isAuthenticated, isLoading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
+    const { user, isAuthenticated, isLoading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Modules.useEffect": ()=>{
             if (!isLoading && !isAuthenticated) {
@@ -1280,8 +1280,10 @@ const Modules = ()=>{
                         className: "space-y-4",
                         children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$modules$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["modules"].map((module, index)=>{
                             const Icon = module.icon;
+                            const isCompleted = user?.completedLessons?.includes(module.id);
+                            const moduleProgress = isCompleted ? 100 : 0; // Simple binary progress for now, can be expanded if modules have sub-steps tracked
                             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                                className: "p-6 hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer animate-fade-in border-2 hover:border-primary",
+                                className: `p-6 hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer animate-fade-in border-2 ${isCompleted ? 'border-success bg-success/5' : 'hover:border-primary'}`,
                                 style: {
                                     animationDelay: `${index * 0.1}s`
                                 },
@@ -1294,12 +1296,12 @@ const Modules = ()=>{
                                                 className: "w-7 h-7 text-primary"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/modules/page.tsx",
-                                                lineNumber: 86,
+                                                lineNumber: 89,
                                                 columnNumber: 41
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/modules/page.tsx",
-                                            lineNumber: 85,
+                                            lineNumber: 88,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1315,7 +1317,7 @@ const Modules = ()=>{
                                                                     children: module.title
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/modules/page.tsx",
-                                                                    lineNumber: 92,
+                                                                    lineNumber: 95,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1323,13 +1325,13 @@ const Modules = ()=>{
                                                                     children: module.description
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/modules/page.tsx",
-                                                                    lineNumber: 93,
+                                                                    lineNumber: 96,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                            lineNumber: 91,
+                                                            lineNumber: 94,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1337,16 +1339,16 @@ const Modules = ()=>{
                                                             children: module.difficulty
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                            lineNumber: 97,
+                                                            lineNumber: 100,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/modules/page.tsx",
-                                                    lineNumber: 90,
+                                                    lineNumber: 93,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                module.progress > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                moduleProgress > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "mb-3",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1357,38 +1359,38 @@ const Modules = ()=>{
                                                                     children: "Progress"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/modules/page.tsx",
-                                                                    lineNumber: 105,
+                                                                    lineNumber: 108,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     className: "font-medium",
                                                                     children: [
-                                                                        module.progress,
+                                                                        moduleProgress,
                                                                         "%"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/modules/page.tsx",
-                                                                    lineNumber: 106,
+                                                                    lineNumber: 109,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                            lineNumber: 104,
+                                                            lineNumber: 107,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$progress$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Progress"], {
-                                                            value: module.progress,
+                                                            value: moduleProgress,
                                                             className: "h-1.5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                            lineNumber: 108,
+                                                            lineNumber: 111,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/modules/page.tsx",
-                                                    lineNumber: 103,
+                                                    lineNumber: 106,
                                                     columnNumber: 45
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1404,20 +1406,20 @@ const Modules = ()=>{
                                                                             className: "w-4 h-4"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                                            lineNumber: 115,
+                                                                            lineNumber: 118,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                             children: module.duration
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                                            lineNumber: 116,
+                                                                            lineNumber: 119,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/modules/page.tsx",
-                                                                    lineNumber: 114,
+                                                                    lineNumber: 117,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1427,7 +1429,7 @@ const Modules = ()=>{
                                                                             className: "w-4 h-4"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                                            lineNumber: 119,
+                                                                            lineNumber: 122,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1438,57 +1440,57 @@ const Modules = ()=>{
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                                            lineNumber: 120,
+                                                                            lineNumber: 123,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/modules/page.tsx",
-                                                                    lineNumber: 118,
+                                                                    lineNumber: 121,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                            lineNumber: 113,
+                                                            lineNumber: 116,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                             href: `/lesson/${module.id}`,
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                                variant: module.progress > 0 ? "default" : "outline",
-                                                                children: module.progress > 0 ? "Continue" : "Start"
+                                                                variant: moduleProgress > 0 ? "default" : "outline",
+                                                                children: moduleProgress >= 100 ? "Review" : moduleProgress > 0 ? "Continue" : "Start"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/modules/page.tsx",
-                                                                lineNumber: 125,
+                                                                lineNumber: 128,
                                                                 columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/modules/page.tsx",
-                                                            lineNumber: 124,
+                                                            lineNumber: 127,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/modules/page.tsx",
-                                                    lineNumber: 112,
+                                                    lineNumber: 115,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/modules/page.tsx",
-                                            lineNumber: 89,
+                                            lineNumber: 92,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/modules/page.tsx",
-                                    lineNumber: 84,
+                                    lineNumber: 87,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, module.id, false, {
                                 fileName: "[project]/src/app/modules/page.tsx",
-                                lineNumber: 79,
+                                lineNumber: 82,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0));
                         })
@@ -1510,7 +1512,7 @@ const Modules = ()=>{
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s(Modules, "x1YCcUir+HeWcFDAY64YqsnOmcQ=", false, function() {
+_s(Modules, "5GkxfatZ5jD+R71nY4wIQPKfDqY=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"]

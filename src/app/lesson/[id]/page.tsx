@@ -15,7 +15,7 @@ import { useAuth } from "@/context/AuthContext";
 const Lesson = () => {
     const params = useParams();
     const router = useRouter();
-    const { user, updateXP, isAuthenticated, isLoading } = useAuth();
+    const { user, updateXP, updateProgress, isAuthenticated, isLoading } = useAuth();
     const [currentStep, setCurrentStep] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
     const [showExplanation, setShowExplanation] = useState(false);
@@ -76,7 +76,9 @@ const Lesson = () => {
             const newXP = currentXP + xpEarned;
             const newLevel = Math.floor(newXP / 500) + 1;
 
+            // Update XP and Progress
             updateXP(newXP, newLevel);
+            updateProgress(lessonId, true);
 
             toast.success(`Lesson completed! +${xpEarned} XP earned`, {
                 icon: <Award className="w-5 h-5" />,

@@ -281,14 +281,22 @@ img, video {
   --input: 214.3 31.8% 91.4%;
   --ring: 222.2 84% 4.9%;
   --radius: .5rem;
+  --success: 142 76% 36%;
+  --success-foreground: 355.7 100% 97.3%;
+  --achievement: 271 91% 65%;
+  --achievement-foreground: 210 40% 98%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 48 96% 89%;
+  --info: 199 89% 48%;
+  --info-foreground: 210 40% 98%;
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
+  --background: 222.2 15% 10%;
   --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
+  --card: 222.2 15% 13%;
   --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
+  --popover: 222.2 15% 13%;
   --popover-foreground: 210 40% 98%;
   --primary: 210 40% 98%;
   --primary-foreground: 222.2 47.4% 11.2%;
@@ -303,6 +311,14 @@ img, video {
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
   --ring: 212.7 26.8% 83.9%;
+  --success: 142 70% 50%;
+  --success-foreground: 144.9 80.4% 10%;
+  --achievement: 271 91% 75%;
+  --achievement-foreground: 210 40% 98%;
+  --warning: 38 92% 60%;
+  --warning-foreground: 48 96% 89%;
+  --info: 199 89% 60%;
+  --info-foreground: 210 40% 98%;
 }
 
 * {
@@ -426,6 +442,10 @@ body {
   left: .75rem;
 }
 
+.left-4 {
+  left: 1rem;
+}
+
 .left-\[50\%\] {
   left: 50%;
 }
@@ -488,10 +508,6 @@ body {
 
 .top-full {
   top: 100%;
-}
-
-.left-4 {
-  left: 1rem;
 }
 
 .z-10 {
@@ -1020,6 +1036,10 @@ body {
   max-width: 28rem;
 }
 
+.max-w-xs {
+  max-width: 20rem;
+}
+
 .flex-1 {
   flex: 1;
 }
@@ -1481,6 +1501,10 @@ body {
   border-color: hsl(var(--success));
 }
 
+.border-success\/20 {
+  border-color: hsl(var(--success) / .2);
+}
+
 .border-transparent {
   border-color: #0000;
 }
@@ -1693,6 +1717,12 @@ body {
 
 .from-success {
   --tw-gradient-from: hsl(var(--success)) var(--tw-gradient-from-position);
+  --tw-gradient-to: hsl(var(--success) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-success\/10 {
+  --tw-gradient-from: hsl(var(--success) / .1) var(--tw-gradient-from-position);
   --tw-gradient-to: hsl(var(--success) / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
@@ -2538,6 +2568,10 @@ body {
 
 .hover\:text-muted-foreground:hover {
   color: hsl(var(--muted-foreground));
+}
+
+.hover\:text-primary:hover {
+  color: hsl(var(--primary));
 }
 
 .hover\:text-primary-foreground:hover {

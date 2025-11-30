@@ -127,6 +127,33 @@ const AuthProvider = ({ children })=>{
             console.error('Error updating XP:', err);
         }
     };
+    const updateProgress = async (lessonId, completed = true)=>{
+        try {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post('/user/progress', {
+                lessonId,
+                completed
+            });
+            setUser(res.data);
+        } catch (err) {
+            console.error('Error updating progress:', err);
+        }
+    };
+    const updateChallenge = async (action)=>{
+        try {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post('/user/challenge', {
+                action
+            });
+            setUser(res.data);
+            if (action === 'start') {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success('Challenge Started! Good luck!');
+            } else {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success('Checked in! +50 XP');
+            }
+        } catch (err) {
+            console.error('Error updating challenge:', err);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(err.response?.data?.msg || 'Action failed');
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AuthContext.Provider, {
         value: {
             user,
@@ -136,12 +163,14 @@ const AuthProvider = ({ children })=>{
             login,
             signup,
             logout,
-            updateXP
+            updateXP,
+            updateProgress,
+            updateChallenge
         },
         children: children
     }, void 0, false, {
         fileName: "[project]/src/context/AuthContext.tsx",
-        lineNumber: 101,
+        lineNumber: 135,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

@@ -61,10 +61,34 @@
       "namedRegex": "^/api/auth/signup(?:/)?$"
     },
     {
+      "page": "/api/auth/user",
+      "regex": "^/api/auth/user(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/user(?:/)?$"
+    },
+    {
       "page": "/api/test-db",
       "regex": "^/api/test\\-db(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/test\\-db(?:/)?$"
+    },
+    {
+      "page": "/api/user/challenge",
+      "regex": "^/api/user/challenge(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/user/challenge(?:/)?$"
+    },
+    {
+      "page": "/api/user/progress",
+      "regex": "^/api/user/progress(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/user/progress(?:/)?$"
+    },
+    {
+      "page": "/api/user/xp",
+      "regex": "^/api/user/xp(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/user/xp(?:/)?$"
     },
     {
       "page": "/community",

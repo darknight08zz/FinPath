@@ -8,7 +8,15 @@ interface User {
     email: string;
     xp: number;
     level: number;
+    completedLessons: number[];
+    currentLesson: number;
     badges: string[];
+    budgetChallenge?: {
+        isActive: boolean;
+        startDate?: string;
+        lastCheckIn?: string;
+        daysCompleted: number;
+    };
 }
 
 interface AuthContextType {
@@ -20,6 +28,8 @@ interface AuthContextType {
     signup: (username: string, email: string, password: string) => Promise<void>;
     logout: () => void;
     updateXP: (xp: number, level?: number) => Promise<void>;
+    updateProgress: (lessonId: number, completed?: boolean) => Promise<void>;
+    updateChallenge: (action: 'start' | 'checkin') => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -97,6 +107,30 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
+    const updateProgress = async (lessonId: number, completed: boolean = true) => {
+        try {
+            const res = await api.post('/user/progress', { lessonId, completed });
+            setUser(res.data);
+        } catch (err) {
+            console.error('Error updating progress:', err);
+        }
+    };
+
+    const updateChallenge = async (action: 'start' | 'checkin') => {
+        try {
+            const res = await api.post('/user/challenge', { action });
+            setUser(res.data);
+            if (action === 'start') {
+                toast.success('Challenge Started! Good luck!');
+            } else {
+                toast.success('Checked in! +50 XP');
+            }
+        } catch (err: any) {
+            console.error('Error updating challenge:', err);
+            toast.error(err.response?.data?.msg || 'Action failed');
+        }
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -107,7 +141,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 login,
                 signup,
                 logout,
-                updateXP
+                updateXP,
+                updateProgress,
+                updateChallenge
             }}
         >
             {children}

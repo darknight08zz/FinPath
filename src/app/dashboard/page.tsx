@@ -24,14 +24,31 @@ import {
 import { ModeToggle } from "@/components/mode-toggle";
 import { ThemeCustomizer } from "@/components/theme-customizer";
 import { useAuth } from "@/context/AuthContext";
+import { modules } from "@/data/modules";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 
 const Dashboard = () => {
     const router = useRouter();
-    const { user, isLoading, isAuthenticated } = useAuth();
+    const { user, isLoading, isAuthenticated, updateChallenge } = useAuth();
     const userXP = user?.xp || 0;
     const userLevel = user?.level || 1;
     const nextLevelXP = userLevel * 500;
     const progress = (userXP / nextLevelXP) * 100;
+
+    // Determine the next lesson to show
+    const completedLessons = user?.completedLessons || [];
+    const currentLessonId = user?.currentLesson || 1;
+
+    // Find the module corresponding to the current lesson ID
+    // Assuming module IDs match lesson IDs for simplicity based on data structure
+    const nextModule = modules.find(m => m.id === currentLessonId) || modules[0];
+    const isAllCompleted = completedLessons.length >= modules.length;
 
     useEffect(() => {
         if (!isLoading && !isAuthenticated) {
@@ -163,51 +180,111 @@ const Dashboard = () => {
                 <Card className="p-6 mb-8 border-2">
                     <div className="flex items-start justify-between mb-4">
                         <div>
-                            <h3 className="text-xl font-bold mb-1">30-Day Budget Challenge</h3>
+                            <div className="flex items-center gap-2 mb-1">
+                                <h3 className="text-xl font-bold">30-Day Budget Challenge</h3>
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <Info className="w-4 h-4 text-muted-foreground hover:text-primary transition-colors" />
+                                        </TooltipTrigger>
+                                        <TooltipContent className="max-w-xs">
+                                            <p>A guided challenge to help you track every expense for 30 days. This builds awareness and helps identify spending leaks!</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
+                            </div>
                             <p className="text-muted-foreground">
                                 Track your expenses for 30 days and stick to your budget
                             </p>
                         </div>
-                        <Badge className="bg-success text-success-foreground">Active</Badge>
+                        {user?.budgetChallenge?.isActive && (
+                            <Badge className="bg-success text-success-foreground">Active</Badge>
+                        )}
                     </div>
-                    <div className="mb-3">
-                        <div className="flex justify-between text-sm mb-2">
-                            <span>Progress</span>
-                            <span className="font-medium">7/30 days</span>
+
+                    {!user?.budgetChallenge?.isActive ? (
+                        <div className="mt-4">
+                            <p className="text-sm text-muted-foreground mb-4">
+                                Ready to take control of your spending? Start the challenge now!
+                            </p>
+                            <Button onClick={() => updateChallenge('start')} className="w-full md:w-auto">
+                                Start Challenge
+                            </Button>
                         </div>
-                        <Progress value={23} className="h-2" />
-                    </div>
-                    <Button className="w-full md:w-auto">Continue Challenge</Button>
+                    ) : (
+                        <div className="mb-3">
+                            <div className="flex justify-between text-sm mb-2">
+                                <span>Progress</span>
+                                <span className="font-medium">{user.budgetChallenge.daysCompleted}/30 days</span>
+                            </div>
+                            <Progress value={(user.budgetChallenge.daysCompleted / 30) * 100} className="h-2 mb-4" />
+
+                            {(() => {
+                                const lastCheckIn = user.budgetChallenge.lastCheckIn ? new Date(user.budgetChallenge.lastCheckIn) : null;
+                                const today = new Date();
+                                const isCheckedInToday = lastCheckIn && lastCheckIn.toDateString() === today.toDateString();
+
+                                return isCheckedInToday ? (
+                                    <Button disabled className="w-full md:w-auto bg-muted text-muted-foreground">
+                                        Checked In Today
+                                    </Button>
+                                ) : (
+                                    <Button onClick={() => updateChallenge('checkin')} className="w-full md:w-auto">
+                                        Check In
+                                    </Button>
+                                );
+                            })()}
+                        </div>
+                    )}
                 </Card>
 
                 {/* Next Lesson Preview */}
                 <div>
                     <h3 className="text-xl font-bold mb-4">Continue Learning</h3>
-                    <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer">
-                        <div className="flex items-start gap-4">
-                            <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                                <BookOpen className="w-8 h-8 text-white" />
-                            </div>
-                            <div className="flex-1">
-                                <Badge variant="secondary" className="mb-2">Beginner</Badge>
-                                <h4 className="font-bold text-lg mb-1">Understanding Your Income</h4>
-                                <p className="text-sm text-muted-foreground mb-3">
-                                    Learn to differentiate between gross and net income, and how taxes affect your take-home pay
-                                </p>
-                                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                                    <div className="flex items-center gap-1">
-                                        <Clock className="w-4 h-4" />
-                                        <span>8 mins</span>
-                                    </div>
-                                    <div className="flex items-center gap-1">
-                                        <Star className="w-4 h-4" />
-                                        <span>+50 XP</span>
-                                    </div>
+                    {isAllCompleted ? (
+                        <Card className="p-6 bg-gradient-to-br from-success/10 to-accent/10 border-success/20">
+                            <div className="flex items-center gap-4">
+                                <div className="w-16 h-16 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                                    <Trophy className="w-8 h-8 text-white" />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-lg mb-1">All Caught Up!</h4>
+                                    <p className="text-muted-foreground">
+                                        You've completed all available modules. Check back later for more!
+                                    </p>
                                 </div>
                             </div>
-                            <Button>Start</Button>
-                        </div>
-                    </Card>
+                        </Card>
+                    ) : (
+                        <Link href={`/lesson/${nextModule.id}`}>
+                            <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer group">
+                                <div className="flex items-start gap-4">
+                                    <div className={`w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0 bg-${nextModule.color}/10 group-hover:bg-${nextModule.color}/20 transition-colors`}>
+                                        {/* Dynamic Icon rendering if possible, else fallback */}
+                                        <BookOpen className={`w-8 h-8 text-${nextModule.color}`} />
+                                    </div>
+                                    <div className="flex-1">
+                                        <Badge variant="secondary" className="mb-2">{nextModule.difficulty}</Badge>
+                                        <h4 className="font-bold text-lg mb-1">{nextModule.title}</h4>
+                                        <p className="text-sm text-muted-foreground mb-3">
+                                            {nextModule.description}
+                                        </p>
+                                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                                            <div className="flex items-center gap-1">
+                                                <Clock className="w-4 h-4" />
+                                                <span>{nextModule.duration}</span>
+                                            </div>
+                                            <div className="flex items-center gap-1">
+                                                <Star className="w-4 h-4" />
+                                                <span>+{nextModule.xp} XP</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <Button>Start</Button>
+                                </div>
+                            </Card>
+                        </Link>
+                    )}
                 </div>
             </div>
 

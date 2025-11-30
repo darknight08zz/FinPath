@@ -154,6 +154,16 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
         type: Number,
         default: 1
     },
+    completedLessons: {
+        type: [
+            Number
+        ],
+        default: []
+    },
+    currentLesson: {
+        type: Number,
+        default: 1
+    },
     badges: [
         {
             type: String

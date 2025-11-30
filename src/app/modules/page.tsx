@@ -19,7 +19,7 @@ import { modules } from "@/data/modules";
 
 const Modules = () => {
     const router = useRouter();
-    const { isAuthenticated, isLoading } = useAuth();
+    const { user, isAuthenticated, isLoading } = useAuth();
 
     useEffect(() => {
         if (!isLoading && !isAuthenticated) {
@@ -75,10 +75,13 @@ const Modules = () => {
                 <div className="space-y-4">
                     {modules.map((module, index) => {
                         const Icon = module.icon;
+                        const isCompleted = user?.completedLessons?.includes(module.id);
+                        const moduleProgress = isCompleted ? 100 : 0; // Simple binary progress for now, can be expanded if modules have sub-steps tracked
+
                         return (
                             <Card
                                 key={module.id}
-                                className="p-6 hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer animate-fade-in border-2 hover:border-primary"
+                                className={`p-6 hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer animate-fade-in border-2 ${isCompleted ? 'border-success bg-success/5' : 'hover:border-primary'}`}
                                 style={{ animationDelay: `${index * 0.1}s` }}
                             >
                                 <div className="flex items-start gap-4">
@@ -99,13 +102,13 @@ const Modules = () => {
                                             </Badge>
                                         </div>
 
-                                        {module.progress > 0 && (
+                                        {moduleProgress > 0 && (
                                             <div className="mb-3">
                                                 <div className="flex justify-between text-xs mb-1">
                                                     <span className="text-muted-foreground">Progress</span>
-                                                    <span className="font-medium">{module.progress}%</span>
+                                                    <span className="font-medium">{moduleProgress}%</span>
                                                 </div>
-                                                <Progress value={module.progress} className="h-1.5" />
+                                                <Progress value={moduleProgress} className="h-1.5" />
                                             </div>
                                         )}
 
@@ -122,8 +125,8 @@ const Modules = () => {
                                             </div>
 
                                             <Link href={`/lesson/${module.id}`}>
-                                                <Button variant={module.progress > 0 ? "default" : "outline"}>
-                                                    {module.progress > 0 ? "Continue" : "Start"}
+                                                <Button variant={moduleProgress > 0 ? "default" : "outline"}>
+                                                    {moduleProgress >= 100 ? "Review" : moduleProgress > 0 ? "Continue" : "Start"}
                                                 </Button>
                                             </Link>
                                         </div>

@@ -154,6 +154,32 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
         type: Number,
         default: 1
     },
+    completedLessons: {
+        type: [
+            Number
+        ],
+        default: []
+    },
+    currentLesson: {
+        type: Number,
+        default: 1
+    },
+    budgetChallenge: {
+        isActive: {
+            type: Boolean,
+            default: false
+        },
+        startDate: {
+            type: Date
+        },
+        lastCheckIn: {
+            type: Date
+        },
+        daysCompleted: {
+            type: Number,
+            default: 0
+        }
+    },
     badges: [
         {
             type: String
@@ -164,6 +190,10 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
         default: Date.now
     }
 });
+// Force model recompilation in dev to pick up schema changes
+if ("TURBOPACK compile-time truthy", 1) {
+    delete __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User;
+}
 const __TURBOPACK__default__export__ = __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User || __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].model('User', UserSchema);
 }),
 "[project]/src/app/api/auth/user/route.ts [app-route] (ecmascript)", ((__turbopack_context__) => {

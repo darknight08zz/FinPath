@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/tools/layout,_N_T_/tools/investment/layout,_N_T_/tools/investment/page,_N_T_/tools/investment"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/tools/investment/__PAGE__",
+    "/tools/investment",
+    "/tools",
+    "/_index",
+    "/_head"
+  ]
+}

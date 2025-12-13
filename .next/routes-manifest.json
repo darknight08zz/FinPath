@@ -67,6 +67,24 @@
       "namedRegex": "^/api/auth/user(?:/)?$"
     },
     {
+      "page": "/api/challenges/complete",
+      "regex": "^/api/challenges/complete(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/challenges/complete(?:/)?$"
+    },
+    {
+      "page": "/api/challenges/join",
+      "regex": "^/api/challenges/join(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/challenges/join(?:/)?$"
+    },
+    {
+      "page": "/api/leaderboard",
+      "regex": "^/api/leaderboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/leaderboard(?:/)?$"
+    },
+    {
       "page": "/api/test-db",
       "regex": "^/api/test\\-db(?:/)?$",
       "routeKeys": {},
@@ -77,6 +95,12 @@
       "regex": "^/api/user/challenge(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/user/challenge(?:/)?$"
+    },
+    {
+      "page": "/api/user/profile",
+      "regex": "^/api/user/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/user/profile(?:/)?$"
     },
     {
       "page": "/api/user/progress",

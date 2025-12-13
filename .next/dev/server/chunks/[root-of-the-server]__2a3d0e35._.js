@@ -146,6 +146,23 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
         required: true,
         minlength: 6
     },
+    profileImage: {
+        type: String,
+        default: ""
+    },
+    bio: {
+        type: String,
+        default: "",
+        maxlength: 500
+    },
+    location: {
+        type: String,
+        default: ""
+    },
+    jobTitle: {
+        type: String,
+        default: ""
+    },
     xp: {
         type: Number,
         default: 0
@@ -185,11 +202,34 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
             type: String
         }
     ],
+    lastLogin: {
+        type: Date
+    },
+    streak: {
+        type: Number,
+        default: 0
+    },
+    joinedChallenges: {
+        type: [
+            String
+        ],
+        default: []
+    },
+    completedChallenges: {
+        type: [
+            String
+        ],
+        default: []
+    },
     createdAt: {
         type: Date,
         default: Date.now
     }
 });
+// Force model recompilation in dev to pick up schema changes
+if ("TURBOPACK compile-time truthy", 1) {
+    delete __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User;
+}
 const __TURBOPACK__default__export__ = __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User || __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].model('User', UserSchema);
 }),
 "[project]/src/app/api/auth/login/route.ts [app-route] (ecmascript)", ((__turbopack_context__) => {
@@ -241,6 +281,28 @@ async function POST(req) {
                 status: 400
             });
         }
+        // Streak Logic
+        const today = new Date();
+        const lastLogin = user.lastLogin ? new Date(user.lastLogin) : null;
+        if (lastLogin) {
+            const diffTime = Math.abs(today.getTime() - lastLogin.getTime());
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            // If login is next day, increment streak
+            // Note: simple check logic, can be made more robust with date comparison (ignoring time)
+            const isNextDay = diffDays > 0 && diffDays <= 2 && today.getDate() !== lastLogin.getDate();
+            if (isNextDay) {
+                user.streak = (user.streak || 0) + 1;
+            } else if (diffDays > 2) {
+                // Missed a day
+                user.streak = 1;
+            }
+        // else: same day, keep streak
+        } else {
+            // First login ever or since feature added
+            user.streak = 1;
+        }
+        user.lastLogin = today;
+        await user.save();
         // Create token
         const payload = {
             user: {
@@ -258,7 +320,8 @@ async function POST(req) {
                 email: user.email,
                 xp: user.xp,
                 level: user.level,
-                badges: user.badges
+                badges: user.badges,
+                streak: user.streak
             }
         });
     } catch (err) {

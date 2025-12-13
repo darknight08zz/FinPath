@@ -120,6 +120,10 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
         default: Date.now
     }
 });
+// Force model recompilation in dev to pick up schema changes
+if ("TURBOPACK compile-time truthy", 1) {
+    delete __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User;
+}
 const __TURBOPACK__default__export__ = __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User || __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].model('User', UserSchema);
 }),
 "[project]/src/lib/db.ts [app-route] (ecmascript)", ((__turbopack_context__) => {
@@ -240,7 +244,9 @@ async function POST(req) {
         }
         // Initialize budgetChallenge if it doesn't exist (safe access)
         let budgetChallenge = user.get('budgetChallenge');
+        console.log('Current budgetChallenge state:', budgetChallenge);
         if (!budgetChallenge) {
+            console.log('Initializing budgetChallenge');
             budgetChallenge = {
                 isActive: false,
                 daysCompleted: 0
@@ -251,6 +257,7 @@ async function POST(req) {
         }
         if (action === 'start') {
             if (budgetChallenge.isActive) {
+                console.log('Challenge already active, returning 400');
                 return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
                     msg: 'Challenge already active'
                 }, {

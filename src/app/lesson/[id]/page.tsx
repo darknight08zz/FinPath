@@ -71,18 +71,29 @@ const Lesson = () => {
             setSelectedAnswer(null);
             setShowExplanation(false);
         } else {
-            const xpEarned = currentContent.xpEarned || 0;
-            const currentXP = user?.xp || 0;
-            const newXP = currentXP + xpEarned;
-            const newLevel = Math.floor(newXP / 500) + 1;
+            const isAlreadyCompleted = user?.completedLessons?.includes(lessonId);
 
-            // Update XP and Progress
-            updateXP(newXP, newLevel);
+            if (!isAlreadyCompleted) {
+                const xpEarned = currentContent.xpEarned || 0;
+                const currentXP = user?.xp || 0;
+                const newXP = currentXP + xpEarned;
+                const newLevel = Math.floor(newXP / 500) + 1;
+
+                // Update XP
+                updateXP(newXP, newLevel);
+
+                toast.success(`Lesson completed! +${xpEarned} XP earned`, {
+                    icon: <Award className="w-5 h-5" />,
+                });
+            } else {
+                toast.success(`Lesson reviewed!`, {
+                    icon: <Check className="w-5 h-5" />,
+                });
+            }
+
+            // Always update progress (to ensure "completed" state is set if it was missed, and to update currentLesson pointer)
             updateProgress(lessonId, true);
 
-            toast.success(`Lesson completed! +${xpEarned} XP earned`, {
-                icon: <Award className="w-5 h-5" />,
-            });
             setTimeout(() => router.push("/modules"), 2000);
         }
     };

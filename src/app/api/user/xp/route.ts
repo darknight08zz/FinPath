@@ -30,6 +30,40 @@ export async function PUT(req: Request) {
                 user.level = level;
             }
 
+            // Reset Logic: If specifically resetting to start
+            if (xp === 0 && level === 1) {
+                user.badges = [];
+            }
+
+            // Gamification: Badge Unlocking
+            if (!user.badges) user.badges = [];
+
+            const newBadges = [];
+
+            // "First Steps" - First XP earned
+            if (user.xp > 0 && !user.badges.includes('🌱')) {
+                user.badges.push('🌱');
+                newBadges.push('🌱');
+            }
+
+            // "Level 5" - Reached Level 5
+            if (user.level >= 5 && !user.badges.includes('⭐')) {
+                user.badges.push('⭐');
+                newBadges.push('⭐');
+            }
+
+            // "Expert" - Reached Level 10
+            if (user.level >= 10 && !user.badges.includes('🚀')) {
+                user.badges.push('🚀');
+                newBadges.push('🚀');
+            }
+
+            // "Master" - Reached Level 20
+            if (user.level >= 20 && !user.badges.includes('🏆')) {
+                user.badges.push('🏆');
+                newBadges.push('🏆');
+            }
+
             await user.save();
 
             // Return user without password

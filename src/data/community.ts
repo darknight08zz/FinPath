@@ -1,7 +1,7 @@
 import { Trophy, Users, Calendar, Star, Target, Zap } from "lucide-react";
 
 export interface LeaderboardEntry {
-    id: number;
+    id: string; // Changed to string
     rank: number;
     name: string;
     xp: number;
@@ -11,7 +11,7 @@ export interface LeaderboardEntry {
 }
 
 export interface Challenge {
-    id: number;
+    id: string; // Changed to string
     title: string;
     description: string;
     participants: number;
@@ -24,7 +24,7 @@ export interface Challenge {
 }
 
 export interface Workshop {
-    id: number;
+    id: string; // Changed to string
     title: string;
     instructor: string;
     date: string;
@@ -36,7 +36,7 @@ export interface Workshop {
 
 export const leaderboardData: LeaderboardEntry[] = [
     {
-        id: 1,
+        id: "1",
         rank: 1,
         name: "Alex Johnson",
         xp: 12500,
@@ -45,7 +45,7 @@ export const leaderboardData: LeaderboardEntry[] = [
         badges: ["🏆", "🔥", "⭐"],
     },
     {
-        id: 2,
+        id: "2",
         rank: 2,
         name: "Sarah Smith",
         xp: 11200,
@@ -54,7 +54,7 @@ export const leaderboardData: LeaderboardEntry[] = [
         badges: ["🔥", "⭐"],
     },
     {
-        id: 3,
+        id: "3",
         rank: 3,
         name: "Mike Brown",
         xp: 10800,
@@ -63,7 +63,7 @@ export const leaderboardData: LeaderboardEntry[] = [
         badges: ["⭐", "🚀"],
     },
     {
-        id: 4,
+        id: "4",
         rank: 4,
         name: "Emily Davis",
         xp: 9500,
@@ -72,7 +72,7 @@ export const leaderboardData: LeaderboardEntry[] = [
         badges: ["🌱"],
     },
     {
-        id: 5,
+        id: "5",
         rank: 5,
         name: "Chris Wilson",
         xp: 8900,
@@ -84,7 +84,7 @@ export const leaderboardData: LeaderboardEntry[] = [
 
 export const challengesData: Challenge[] = [
     {
-        id: 1,
+        id: "1",
         title: "Savings Sprint",
         description: "Save $500 this month by cutting unnecessary expenses.",
         participants: 1240,
@@ -96,7 +96,7 @@ export const challengesData: Challenge[] = [
         progress: 65,
     },
     {
-        id: 2,
+        id: "2",
         title: "Debt Destroyer",
         description: "Pay off an extra $100 towards your highest interest debt.",
         participants: 850,
@@ -108,7 +108,7 @@ export const challengesData: Challenge[] = [
         progress: 40,
     },
     {
-        id: 3,
+        id: "3",
         title: "Investment Club",
         description: "Complete the 'Investment Fundamentals' module and start your portfolio.",
         participants: 2100,
@@ -123,7 +123,7 @@ export const challengesData: Challenge[] = [
 
 export const workshopsData: Workshop[] = [
     {
-        id: 1,
+        id: "1",
         title: "Investing 101: Getting Started",
         instructor: "Warren B.",
         date: "Oct 15, 2023",
@@ -133,7 +133,7 @@ export const workshopsData: Workshop[] = [
         image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=1000",
     },
     {
-        id: 2,
+        id: "2",
         title: "Tax Prep Masterclass",
         instructor: "Sarah C.PA",
         date: "Oct 22, 2023",
@@ -143,7 +143,7 @@ export const workshopsData: Workshop[] = [
         image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000",
     },
     {
-        id: 3,
+        id: "3", // Changed to string
         title: "Budgeting for Families",
         instructor: "Dave R.",
         date: "Oct 29, 2023",

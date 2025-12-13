@@ -413,7 +413,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 ;
 const leaderboardData = [
     {
-        id: 1,
+        id: "1",
         rank: 1,
         name: "Alex Johnson",
         xp: 12500,
@@ -426,7 +426,7 @@ const leaderboardData = [
         ]
     },
     {
-        id: 2,
+        id: "2",
         rank: 2,
         name: "Sarah Smith",
         xp: 11200,
@@ -438,7 +438,7 @@ const leaderboardData = [
         ]
     },
     {
-        id: 3,
+        id: "3",
         rank: 3,
         name: "Mike Brown",
         xp: 10800,
@@ -450,7 +450,7 @@ const leaderboardData = [
         ]
     },
     {
-        id: 4,
+        id: "4",
         rank: 4,
         name: "Emily Davis",
         xp: 9500,
@@ -461,7 +461,7 @@ const leaderboardData = [
         ]
     },
     {
-        id: 5,
+        id: "5",
         rank: 5,
         name: "Chris Wilson",
         xp: 8900,
@@ -474,7 +474,7 @@ const leaderboardData = [
 ];
 const challengesData = [
     {
-        id: 1,
+        id: "1",
         title: "Savings Sprint",
         description: "Save $500 this month by cutting unnecessary expenses.",
         participants: 1240,
@@ -486,7 +486,7 @@ const challengesData = [
         progress: 65
     },
     {
-        id: 2,
+        id: "2",
         title: "Debt Destroyer",
         description: "Pay off an extra $100 towards your highest interest debt.",
         participants: 850,
@@ -498,7 +498,7 @@ const challengesData = [
         progress: 40
     },
     {
-        id: 3,
+        id: "3",
         title: "Investment Club",
         description: "Complete the 'Investment Fundamentals' module and start your portfolio.",
         participants: 2100,
@@ -512,7 +512,7 @@ const challengesData = [
 ];
 const workshopsData = [
     {
-        id: 1,
+        id: "1",
         title: "Investing 101: Getting Started",
         instructor: "Warren B.",
         date: "Oct 15, 2023",
@@ -522,7 +522,7 @@ const workshopsData = [
         image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=1000"
     },
     {
-        id: 2,
+        id: "2",
         title: "Tax Prep Masterclass",
         instructor: "Sarah C.PA",
         date: "Oct 22, 2023",
@@ -532,7 +532,7 @@ const workshopsData = [
         image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000"
     },
     {
-        id: 3,
+        id: "3",
         title: "Budgeting for Families",
         instructor: "Dave R.",
         date: "Oct 29, 2023",
@@ -573,6 +573,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/sonner/dist/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/context/AuthContext.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$community$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/data/community.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/api.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
@@ -589,11 +590,49 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 const Community = ()=>{
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    const { isAuthenticated, isLoading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
+    const { isAuthenticated, isLoading, user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])(); // Assuming 'user' is now returned by useAuth
     const [activeTab, setActiveTab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("leaderboard");
+    const [leaderboard, setLeaderboard] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    // Real Gamification State
+    const [joinedChallenges, setJoinedChallenges] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [completedChallenges, setCompletedChallenges] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Community.useEffect": ()=>{
+            const fetchLeaderboard = {
+                "Community.useEffect.fetchLeaderboard": async ()=>{
+                    try {
+                        const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get('/leaderboard');
+                        setLeaderboard(res.data);
+                    } catch (err) {
+                        console.error("Failed to fetch leaderboard", err);
+                    // toast.error("Failed to load leaderboard");
+                    }
+                }
+            }["Community.useEffect.fetchLeaderboard"];
+            const fetchUserChallenges = {
+                "Community.useEffect.fetchUserChallenges": async ()=>{
+                    // Ideally we get this from user context, but for now we can fetch profile
+                    try {
+                        const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get('/auth/user');
+                        setJoinedChallenges(res.data.joinedChallenges || []);
+                        setCompletedChallenges(res.data.completedChallenges || []);
+                    } catch (err) {
+                    // Warning suppressed
+                    }
+                }
+            }["Community.useEffect.fetchUserChallenges"];
+            if (isAuthenticated) {
+                fetchLeaderboard();
+                fetchUserChallenges();
+            }
+        }
+    }["Community.useEffect"], [
+        isAuthenticated
+    ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Community.useEffect": ()=>{
             if (!isLoading && !isAuthenticated) {
@@ -613,10 +652,35 @@ const Community = ()=>{
             description: "We've sent a calendar invite to your email."
         });
     };
-    const handleJoinChallenge = (challengeTitle)=>{
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(`Joined ${challengeTitle}!`, {
-            description: "Good luck! Track your progress on the dashboard."
-        });
+    const handleJoinChallenge = async (challengeId, challengeTitle)=>{
+        try {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post('/challenges/join', {
+                challengeId
+            });
+            setJoinedChallenges(res.data.joinedChallenges);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(`Joined ${challengeTitle}!`, {
+                description: "Good luck! Track your progress."
+            });
+        } catch (err) {
+            console.error(err);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(err.response?.data?.msg || "Failed to join challenge");
+        }
+    };
+    const handleCompleteChallenge = async (challengeId)=>{
+        try {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post('/challenges/complete', {
+                challengeId,
+                xpReward: 500
+            }); // Hardcoded 500 XP for now
+            setJoinedChallenges(res.data.joinedChallenges);
+            setCompletedChallenges(res.data.completedChallenges);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(`Challenge Completed!`, {
+                description: `You earned 500 XP! New XP: ${res.data.xp}`
+            });
+        } catch (err) {
+            console.error(err);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(err.response?.data?.msg || "Failed to complete challenge");
+        }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-background pb-20 md:pb-8",
@@ -638,17 +702,17 @@ const Community = ()=>{
                                             className: "w-5 h-5"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/community/page.tsx",
-                                            lineNumber: 61,
+                                            lineNumber: 127,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/community/page.tsx",
-                                        lineNumber: 60,
+                                        lineNumber: 126,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/community/page.tsx",
-                                    lineNumber: 59,
+                                    lineNumber: 125,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -656,13 +720,13 @@ const Community = ()=>{
                                     children: "Community & Challenges"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/community/page.tsx",
-                                    lineNumber: 64,
+                                    lineNumber: 130,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/community/page.tsx",
-                            lineNumber: 58,
+                            lineNumber: 124,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -670,18 +734,18 @@ const Community = ()=>{
                             children: "Compete, learn, and grow with the FinPath community."
                         }, void 0, false, {
                             fileName: "[project]/src/app/community/page.tsx",
-                            lineNumber: 66,
+                            lineNumber: 132,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/community/page.tsx",
-                    lineNumber: 57,
+                    lineNumber: 123,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/app/community/page.tsx",
-                lineNumber: 56,
+                lineNumber: 122,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -702,7 +766,7 @@ const Community = ()=>{
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/community/page.tsx",
-                                            lineNumber: 76,
+                                            lineNumber: 142,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -710,13 +774,13 @@ const Community = ()=>{
                                             children: "Leaderboard"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/community/page.tsx",
-                                            lineNumber: 77,
+                                            lineNumber: 143,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/community/page.tsx",
-                                    lineNumber: 75,
+                                    lineNumber: 141,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -727,7 +791,7 @@ const Community = ()=>{
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/community/page.tsx",
-                                            lineNumber: 80,
+                                            lineNumber: 146,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -735,13 +799,13 @@ const Community = ()=>{
                                             children: "Challenges"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/community/page.tsx",
-                                            lineNumber: 81,
+                                            lineNumber: 147,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/community/page.tsx",
-                                    lineNumber: 79,
+                                    lineNumber: 145,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -752,7 +816,7 @@ const Community = ()=>{
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/community/page.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 150,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -760,19 +824,19 @@ const Community = ()=>{
                                             children: "Workshops"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/community/page.tsx",
-                                            lineNumber: 85,
+                                            lineNumber: 151,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/community/page.tsx",
-                                    lineNumber: 83,
+                                    lineNumber: 149,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/community/page.tsx",
-                            lineNumber: 74,
+                            lineNumber: 140,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -791,14 +855,14 @@ const Community = ()=>{
                                                         className: "w-6 h-6 text-achievement"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 94,
+                                                        lineNumber: 160,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     "Top Earners"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                lineNumber: 93,
+                                                lineNumber: 159,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -806,18 +870,25 @@ const Community = ()=>{
                                                 children: "Global Ranking"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                lineNumber: 97,
+                                                lineNumber: 163,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/community/page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 158,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "space-y-4",
-                                        children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$community$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["leaderboardData"].map((user)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: leaderboard.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "text-center py-8 text-muted-foreground",
+                                            children: "Loading leaderboard..."
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/community/page.tsx",
+                                            lineNumber: 168,
+                                            columnNumber: 37
+                                        }, ("TURBOPACK compile-time value", void 0)) : leaderboard.map((user)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: `flex items-center p-4 rounded-lg border transition-all hover:bg-muted/50 ${user.rank <= 3 ? "border-achievement/50 bg-achievement/5" : "border-border"}`,
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -825,8 +896,8 @@ const Community = ()=>{
                                                         children: user.rank
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 107,
-                                                        columnNumber: 41
+                                                        lineNumber: 178,
+                                                        columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Avatar"], {
                                                         className: "w-10 h-10 border-2 border-background mr-4",
@@ -834,13 +905,13 @@ const Community = ()=>{
                                                             children: user.avatar
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/community/page.tsx",
-                                                            lineNumber: 116,
-                                                            columnNumber: 45
+                                                            lineNumber: 187,
+                                                            columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 115,
-                                                        columnNumber: 41
+                                                        lineNumber: 186,
+                                                        columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "flex-1",
@@ -853,8 +924,8 @@ const Community = ()=>{
                                                                         children: user.name
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                                        lineNumber: 121,
-                                                                        columnNumber: 49
+                                                                        lineNumber: 192,
+                                                                        columnNumber: 53
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "flex gap-1",
@@ -864,36 +935,38 @@ const Community = ()=>{
                                                                                 children: badge
                                                                             }, i, false, {
                                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                                lineNumber: 124,
-                                                                                columnNumber: 57
+                                                                                lineNumber: 195,
+                                                                                columnNumber: 61
                                                                             }, ("TURBOPACK compile-time value", void 0)))
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                                        lineNumber: 122,
-                                                                        columnNumber: 49
+                                                                        lineNumber: 193,
+                                                                        columnNumber: 53
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 120,
-                                                                columnNumber: 45
+                                                                lineNumber: 191,
+                                                                columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                 className: "text-sm text-muted-foreground",
                                                                 children: [
                                                                     "Level ",
-                                                                    user.level
+                                                                    user.level,
+                                                                    " ",
+                                                                    user.streak > 0 && `• 🔥 ${user.streak} Day Streak`
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 128,
-                                                                columnNumber: 45
+                                                                lineNumber: 199,
+                                                                columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 119,
-                                                        columnNumber: 41
+                                                        lineNumber: 190,
+                                                        columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "text-right",
@@ -905,34 +978,34 @@ const Community = ()=>{
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/community/page.tsx",
-                                                            lineNumber: 132,
-                                                            columnNumber: 45
+                                                            lineNumber: 203,
+                                                            columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 131,
-                                                        columnNumber: 41
+                                                        lineNumber: 202,
+                                                        columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, user.id, true, {
                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                lineNumber: 102,
-                                                columnNumber: 37
+                                                lineNumber: 173,
+                                                columnNumber: 41
                                             }, ("TURBOPACK compile-time value", void 0)))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/community/page.tsx",
-                                        lineNumber: 100,
+                                        lineNumber: 166,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/community/page.tsx",
-                                lineNumber: 91,
+                                lineNumber: 157,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/app/community/page.tsx",
-                            lineNumber: 90,
+                            lineNumber: 156,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -942,6 +1015,8 @@ const Community = ()=>{
                                 className: "grid gap-6",
                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$community$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["challengesData"].map((challenge)=>{
                                     const Icon = challenge.icon;
+                                    const isJoined = joinedChallenges.includes(challenge.id);
+                                    const isCompleted = completedChallenges.includes(challenge.id);
                                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
                                         className: "p-6 border-2 hover:border-primary transition-colors",
                                         children: [
@@ -957,12 +1032,12 @@ const Community = ()=>{
                                                                     className: `w-6 h-6 text-${challenge.color}`
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/community/page.tsx",
-                                                                    lineNumber: 150,
+                                                                    lineNumber: 225,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 149,
+                                                                lineNumber: 224,
                                                                 columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -972,7 +1047,7 @@ const Community = ()=>{
                                                                         children: challenge.title
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                                        lineNumber: 153,
+                                                                        lineNumber: 228,
                                                                         columnNumber: 53
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -980,19 +1055,19 @@ const Community = ()=>{
                                                                         children: challenge.target
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                                        lineNumber: 154,
+                                                                        lineNumber: 229,
                                                                         columnNumber: 53
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 152,
+                                                                lineNumber: 227,
                                                                 columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 148,
+                                                        lineNumber: 223,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1003,7 +1078,7 @@ const Community = ()=>{
                                                                 className: "w-3 h-3"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 158,
+                                                                lineNumber: 233,
                                                                 columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             challenge.daysLeft,
@@ -1011,13 +1086,13 @@ const Community = ()=>{
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 157,
+                                                        lineNumber: 232,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                lineNumber: 147,
+                                                lineNumber: 222,
                                                 columnNumber: 41
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1025,7 +1100,7 @@ const Community = ()=>{
                                                 children: challenge.description
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                lineNumber: 163,
+                                                lineNumber: 238,
                                                 columnNumber: 41
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1041,7 +1116,7 @@ const Community = ()=>{
                                                                         className: "w-3 h-3"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                                        lineNumber: 170,
+                                                                        lineNumber: 245,
                                                                         columnNumber: 53
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     " ",
@@ -1050,7 +1125,7 @@ const Community = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 169,
+                                                                lineNumber: 244,
                                                                 columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1061,13 +1136,13 @@ const Community = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 172,
+                                                                lineNumber: 247,
                                                                 columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 168,
+                                                        lineNumber: 243,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$progress$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Progress"], {
@@ -1075,13 +1150,13 @@ const Community = ()=>{
                                                         className: "h-2"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 174,
+                                                        lineNumber: 249,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                lineNumber: 167,
+                                                lineNumber: 242,
                                                 columnNumber: 41
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1094,45 +1169,70 @@ const Community = ()=>{
                                                                 className: "w-4 h-4"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 179,
+                                                                lineNumber: 254,
                                                                 columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             challenge.reward
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 178,
+                                                        lineNumber: 253,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0)),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                        onClick: ()=>handleJoinChallenge(challenge.title),
+                                                    isCompleted ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                        disabled: true,
+                                                        variant: "outline",
+                                                        className: "border-achievement text-achievement bg-achievement/10",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$medal$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Medal$3e$__["Medal"], {
+                                                                className: "w-4 h-4 mr-2"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/community/page.tsx",
+                                                                lineNumber: 260,
+                                                                columnNumber: 53
+                                                            }, ("TURBOPACK compile-time value", void 0)),
+                                                            " Completed"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/app/community/page.tsx",
+                                                        lineNumber: 259,
+                                                        columnNumber: 49
+                                                    }, ("TURBOPACK compile-time value", void 0)) : isJoined ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                        onClick: ()=>handleCompleteChallenge(challenge.id),
+                                                        children: "Mark Complete"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/app/community/page.tsx",
+                                                        lineNumber: 263,
+                                                        columnNumber: 49
+                                                    }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                        onClick: ()=>handleJoinChallenge(challenge.id, challenge.title),
                                                         children: "Join Challenge"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 182,
-                                                        columnNumber: 45
+                                                        lineNumber: 267,
+                                                        columnNumber: 49
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                lineNumber: 177,
+                                                lineNumber: 252,
                                                 columnNumber: 41
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, challenge.id, true, {
                                         fileName: "[project]/src/app/community/page.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 221,
                                         columnNumber: 37
                                     }, ("TURBOPACK compile-time value", void 0));
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/src/app/community/page.tsx",
-                                lineNumber: 142,
+                                lineNumber: 214,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/app/community/page.tsx",
-                            lineNumber: 141,
+                            lineNumber: 213,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1152,7 +1252,7 @@ const Community = ()=>{
                                                         className: "w-full h-full object-cover"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 196,
+                                                        lineNumber: 284,
                                                         columnNumber: 41
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1160,13 +1260,13 @@ const Community = ()=>{
                                                         children: workshop.category
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 201,
+                                                        lineNumber: 289,
                                                         columnNumber: 41
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                lineNumber: 195,
+                                                lineNumber: 283,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1177,7 +1277,7 @@ const Community = ()=>{
                                                         children: workshop.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 206,
+                                                        lineNumber: 294,
                                                         columnNumber: 41
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1190,7 +1290,7 @@ const Community = ()=>{
                                                                         className: "w-4 h-4"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                                        lineNumber: 209,
+                                                                        lineNumber: 297,
                                                                         columnNumber: 49
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1200,13 +1300,13 @@ const Community = ()=>{
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                                        lineNumber: 210,
+                                                                        lineNumber: 298,
                                                                         columnNumber: 49
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 208,
+                                                                lineNumber: 296,
                                                                 columnNumber: 45
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1216,7 +1316,7 @@ const Community = ()=>{
                                                                         className: "w-4 h-4"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                                        lineNumber: 213,
+                                                                        lineNumber: 301,
                                                                         columnNumber: 49
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1227,19 +1327,19 @@ const Community = ()=>{
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                                        lineNumber: 214,
+                                                                        lineNumber: 302,
                                                                         columnNumber: 49
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                                lineNumber: 212,
+                                                                lineNumber: 300,
                                                                 columnNumber: 45
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 207,
+                                                        lineNumber: 295,
                                                         columnNumber: 41
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1249,50 +1349,50 @@ const Community = ()=>{
                                                         children: "Register Now"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/community/page.tsx",
-                                                        lineNumber: 217,
+                                                        lineNumber: 305,
                                                         columnNumber: 41
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/community/page.tsx",
-                                                lineNumber: 205,
+                                                lineNumber: 293,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, workshop.id, true, {
                                         fileName: "[project]/src/app/community/page.tsx",
-                                        lineNumber: 194,
+                                        lineNumber: 282,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0)))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/community/page.tsx",
-                                lineNumber: 192,
+                                lineNumber: 280,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/app/community/page.tsx",
-                            lineNumber: 191,
+                            lineNumber: 279,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/community/page.tsx",
-                    lineNumber: 73,
+                    lineNumber: 139,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/app/community/page.tsx",
-                lineNumber: 72,
+                lineNumber: 138,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/community/page.tsx",
-        lineNumber: 54,
+        lineNumber: 120,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s(Community, "w+vGXAk+TXXETY4gEG2+CZajyCs=", false, function() {
+_s(Community, "SU+r3vMbXi3eh2Mfe26vtEJXSF8=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"]

@@ -335,6 +335,138 @@ const scenarios = [
                 happinessChange: 15
             }
         ]
+    },
+    {
+        id: "salary-negotiation",
+        title: "Salary Negotiation",
+        description: "It's performance review time! You exceeded your targets. Your boss offers a standard 5% hike. Inflation is at 6%.",
+        money: 45000,
+        happiness: 65,
+        decisions: [
+            {
+                id: "accept",
+                text: "Accept gracefully to avoid conflict",
+                consequence: "You kept the peace, but your real income actually went down due to inflation. You missed a chance to grow.",
+                moneyChange: 2250,
+                xpChange: 20,
+                happinessChange: 0
+            },
+            {
+                id: "negotiate",
+                text: "Negotiate for 15% with data proof",
+                consequence: "Bold move! Your boss was impressed by your preparation and agreed to 12%. Wealth is often built by asking.",
+                moneyChange: 5400,
+                xpChange: 100,
+                happinessChange: 20
+            },
+            {
+                id: "quiet-quit",
+                text: "Complain to colleagues and do less work",
+                consequence: "Bad idea. You soured your reputation and gained nothing. Negativity hurts your long-term career value.",
+                moneyChange: 0,
+                xpChange: -20,
+                happinessChange: -10
+            }
+        ]
+    },
+    {
+        id: "credit-trap",
+        title: "The Credit Trap",
+        description: "Your credit card bill is ₹25,000. You have ₹30,000 in your bank. The 'Minimum Due' is only ₹1,200.",
+        money: 55000,
+        happiness: 75,
+        decisions: [
+            {
+                id: "min-due",
+                text: "Pay only Minimum Due (₹1,200) to keep cash",
+                consequence: "Trap! The remaining ₹23,800 will now attract 40% annual interest. You just signed up for expensive debt.",
+                moneyChange: -1200,
+                xpChange: 10,
+                happinessChange: 5
+            },
+            {
+                id: "full-pay",
+                text: "Pay Full Amount (₹25,000)",
+                consequence: "Painful now, but smart. You paid ₹0 interest and kept your credit score high. You are debt-free!",
+                moneyChange: -25000,
+                xpChange: 120,
+                happinessChange: -5
+            },
+            {
+                id: "convert-emi",
+                text: "Convert to 6-month EMI",
+                consequence: "Okay choice. You pay some interest (15%) but keep liquidity. Better than minimum due, worse than full payment.",
+                moneyChange: -4500,
+                xpChange: 60,
+                happinessChange: 0
+            }
+        ]
+    },
+    {
+        id: "insurance",
+        title: "Risk Management",
+        description: "A friend was hospitalized and faced a huge bill. You realized you have no health insurance. A policy costs ₹8,000/year.",
+        money: 50000,
+        happiness: 70,
+        decisions: [
+            {
+                id: "buy-insurance",
+                text: "Buy the Health Insurance Policy",
+                consequence: "You spent money for 'nothing' right now, but you bought peace of mind. One hospital visit won't bankrupt you.",
+                moneyChange: -8000,
+                xpChange: 90,
+                happinessChange: 10
+            },
+            {
+                id: "skip-insurance",
+                text: "Skip it, I'm young and healthy",
+                consequence: "Risky! You saved cash, but if an accident happens, your savings will be wiped out instantly.",
+                moneyChange: 0,
+                xpChange: 0,
+                happinessChange: 0
+            },
+            {
+                id: "invest-premium",
+                text: "Invest the premium amount instead",
+                consequence: "Investments grow wealth, Insurance protects it. You need both. Don't mix risk management with investing.",
+                moneyChange: 0,
+                xpChange: 40,
+                happinessChange: 5
+            }
+        ]
+    },
+    {
+        id: "side-hustle",
+        title: "The Weekend Hustle",
+        description: "You have a free weekend. You could freelance for extra cash, learn a new skill, or just relax.",
+        money: 60000,
+        happiness: 60,
+        decisions: [
+            {
+                id: "freelance",
+                text: "Freelance for a client",
+                consequence: "Grind mode! You earned extra cash, but you're tired. Remember that burnout can cost money too.",
+                moneyChange: 5000,
+                xpChange: 50,
+                happinessChange: -10
+            },
+            {
+                id: "relax",
+                text: "Relax and recharge",
+                consequence: "You earned ₹0, but your mental health improved. Sometimes rest is the most productive thing to do.",
+                moneyChange: 0,
+                xpChange: 20,
+                happinessChange: 20
+            },
+            {
+                id: "upskill",
+                text: "Take an online course",
+                consequence: "Investment in self! You spent time learning. This will likely increase your salary in the next negotiation.",
+                moneyChange: -500,
+                xpChange: 150,
+                happinessChange: 5
+            }
+        ]
     }
 ];
 const ScenarioGame = ()=>{
@@ -407,17 +539,17 @@ const ScenarioGame = ()=>{
                                             className: "w-5 h-5"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 190,
+                                            lineNumber: 322,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 189,
+                                        lineNumber: 321,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 188,
+                                    lineNumber: 320,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -425,23 +557,23 @@ const ScenarioGame = ()=>{
                                     children: "Scenario Game"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 193,
+                                    lineNumber: 325,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                            lineNumber: 187,
+                            lineNumber: 319,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                        lineNumber: 186,
+                        lineNumber: 318,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                    lineNumber: 185,
+                    lineNumber: 317,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -455,12 +587,12 @@ const ScenarioGame = ()=>{
                                     className: "w-10 h-10 text-achievement"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 201,
+                                    lineNumber: 333,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 200,
+                                lineNumber: 332,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -468,7 +600,7 @@ const ScenarioGame = ()=>{
                                 children: "Game Complete!"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 203,
+                                lineNumber: 335,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -476,7 +608,7 @@ const ScenarioGame = ()=>{
                                 children: "Great job navigating through financial decisions!"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 204,
+                                lineNumber: 336,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -489,7 +621,7 @@ const ScenarioGame = ()=>{
                                                 className: "w-8 h-8 text-achievement mb-2 mx-auto"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 210,
+                                                lineNumber: 342,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -497,7 +629,7 @@ const ScenarioGame = ()=>{
                                                 children: totalXP
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 211,
+                                                lineNumber: 343,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -505,13 +637,13 @@ const ScenarioGame = ()=>{
                                                 children: "XP Earned"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 212,
+                                                lineNumber: 344,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 209,
+                                        lineNumber: 341,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -521,7 +653,7 @@ const ScenarioGame = ()=>{
                                                 className: "w-8 h-8 text-success mb-2 mx-auto"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 216,
+                                                lineNumber: 348,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -532,7 +664,7 @@ const ScenarioGame = ()=>{
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 217,
+                                                lineNumber: 349,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -540,13 +672,13 @@ const ScenarioGame = ()=>{
                                                 children: "Final Balance"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 218,
+                                                lineNumber: 350,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 215,
+                                        lineNumber: 347,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -556,7 +688,7 @@ const ScenarioGame = ()=>{
                                                 className: "w-8 h-8 text-destructive mb-2 mx-auto"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 222,
+                                                lineNumber: 354,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -567,7 +699,7 @@ const ScenarioGame = ()=>{
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 223,
+                                                lineNumber: 355,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -575,19 +707,19 @@ const ScenarioGame = ()=>{
                                                 children: "Happiness"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 224,
+                                                lineNumber: 356,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 221,
+                                        lineNumber: 353,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 208,
+                                lineNumber: 340,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -598,7 +730,7 @@ const ScenarioGame = ()=>{
                                         children: "Your Decisions:"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 229,
+                                        lineNumber: 361,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -614,7 +746,7 @@ const ScenarioGame = ()=>{
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                        lineNumber: 233,
+                                                        lineNumber: 365,
                                                         columnNumber: 41
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -625,7 +757,7 @@ const ScenarioGame = ()=>{
                                                                 children: decision.text
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                                lineNumber: 237,
+                                                                lineNumber: 369,
                                                                 columnNumber: 45
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -638,13 +770,13 @@ const ScenarioGame = ()=>{
                                                                                 className: "inline w-4 h-4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                                                lineNumber: 240,
+                                                                                lineNumber: 372,
                                                                                 columnNumber: 82
                                                                             }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$down$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingDown$3e$__["TrendingDown"], {
                                                                                 className: "inline w-4 h-4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                                                lineNumber: 240,
+                                                                                lineNumber: 372,
                                                                                 columnNumber: 126
                                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                                             decision.moneyChange >= 0 ? '+' : '',
@@ -653,7 +785,7 @@ const ScenarioGame = ()=>{
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                                        lineNumber: 239,
+                                                                        lineNumber: 371,
                                                                         columnNumber: 49
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -665,36 +797,36 @@ const ScenarioGame = ()=>{
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                                        lineNumber: 243,
+                                                                        lineNumber: 375,
                                                                         columnNumber: 49
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                                lineNumber: 238,
+                                                                lineNumber: 370,
                                                                 columnNumber: 45
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                        lineNumber: 236,
+                                                        lineNumber: 368,
                                                         columnNumber: 41
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, idx, true, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 232,
+                                                lineNumber: 364,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0)))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 362,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 228,
+                                lineNumber: 360,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -709,14 +841,14 @@ const ScenarioGame = ()=>{
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 253,
+                                                lineNumber: 385,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             "Play Again"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 252,
+                                        lineNumber: 384,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -727,35 +859,35 @@ const ScenarioGame = ()=>{
                                             children: "Back to Tools"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 257,
+                                            lineNumber: 389,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 256,
+                                        lineNumber: 388,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 251,
+                                lineNumber: 383,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                        lineNumber: 199,
+                        lineNumber: 331,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                    lineNumber: 198,
+                    lineNumber: 330,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/tools/scenario/page.tsx",
-            lineNumber: 184,
+            lineNumber: 316,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -781,17 +913,17 @@ const ScenarioGame = ()=>{
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 276,
+                                                lineNumber: 408,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 275,
+                                            lineNumber: 407,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 274,
+                                        lineNumber: 406,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -799,13 +931,13 @@ const ScenarioGame = ()=>{
                                         children: "Financial Scenario"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 279,
+                                        lineNumber: 411,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 273,
+                                lineNumber: 405,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -818,23 +950,23 @@ const ScenarioGame = ()=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 281,
+                                lineNumber: 413,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                        lineNumber: 272,
+                        lineNumber: 404,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                    lineNumber: 271,
+                    lineNumber: 403,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                lineNumber: 270,
+                lineNumber: 402,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -850,7 +982,7 @@ const ScenarioGame = ()=>{
                                         className: "w-6 h-6 text-success mx-auto mb-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 292,
+                                        lineNumber: 424,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -861,7 +993,7 @@ const ScenarioGame = ()=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 293,
+                                        lineNumber: 425,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -869,13 +1001,13 @@ const ScenarioGame = ()=>{
                                         children: "Balance"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 294,
+                                        lineNumber: 426,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 291,
+                                lineNumber: 423,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -885,7 +1017,7 @@ const ScenarioGame = ()=>{
                                         className: "w-6 h-6 text-achievement mx-auto mb-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 298,
+                                        lineNumber: 430,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -893,7 +1025,7 @@ const ScenarioGame = ()=>{
                                         children: totalXP
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 299,
+                                        lineNumber: 431,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -901,13 +1033,13 @@ const ScenarioGame = ()=>{
                                         children: "XP"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 300,
+                                        lineNumber: 432,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 297,
+                                lineNumber: 429,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -917,7 +1049,7 @@ const ScenarioGame = ()=>{
                                         className: "w-6 h-6 text-destructive mx-auto mb-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 304,
+                                        lineNumber: 436,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -928,7 +1060,7 @@ const ScenarioGame = ()=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 305,
+                                        lineNumber: 437,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -936,19 +1068,19 @@ const ScenarioGame = ()=>{
                                         children: "Happiness"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                        lineNumber: 306,
+                                        lineNumber: 438,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                lineNumber: 303,
+                                lineNumber: 435,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                        lineNumber: 290,
+                        lineNumber: 422,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -964,12 +1096,12 @@ const ScenarioGame = ()=>{
                                                 className: "w-8 h-8 text-primary"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 316,
+                                                lineNumber: 448,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 315,
+                                            lineNumber: 447,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -979,7 +1111,7 @@ const ScenarioGame = ()=>{
                                                     children: currentScenario.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                    lineNumber: 319,
+                                                    lineNumber: 451,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -987,19 +1119,19 @@ const ScenarioGame = ()=>{
                                                     children: "Make your choice wisely"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                    lineNumber: 320,
+                                                    lineNumber: 452,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 318,
+                                            lineNumber: 450,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 314,
+                                    lineNumber: 446,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1007,7 +1139,7 @@ const ScenarioGame = ()=>{
                                     children: currentScenario.description
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 324,
+                                    lineNumber: 456,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1024,7 +1156,7 @@ const ScenarioGame = ()=>{
                                                         children: decision.text
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                        lineNumber: 335,
+                                                        lineNumber: 467,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1039,7 +1171,7 @@ const ScenarioGame = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                                lineNumber: 338,
+                                                                lineNumber: 470,
                                                                 columnNumber: 53
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1051,29 +1183,29 @@ const ScenarioGame = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                                lineNumber: 342,
+                                                                lineNumber: 474,
                                                                 columnNumber: 49
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                        lineNumber: 336,
+                                                        lineNumber: 468,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 334,
+                                                lineNumber: 466,
                                                 columnNumber: 41
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, decision.id, false, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 328,
+                                            lineNumber: 460,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 326,
+                                    lineNumber: 458,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
@@ -1088,12 +1220,12 @@ const ScenarioGame = ()=>{
                                                 className: "w-8 h-8 text-success"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                lineNumber: 353,
+                                                lineNumber: 485,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 352,
+                                            lineNumber: 484,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1103,7 +1235,7 @@ const ScenarioGame = ()=>{
                                                     children: "Decision Made!"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                    lineNumber: 356,
+                                                    lineNumber: 488,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1111,19 +1243,19 @@ const ScenarioGame = ()=>{
                                                     children: "Here's what happened"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                                    lineNumber: 357,
+                                                    lineNumber: 489,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 355,
+                                            lineNumber: 487,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 351,
+                                    lineNumber: 483,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -1134,7 +1266,7 @@ const ScenarioGame = ()=>{
                                             children: "You chose:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 362,
+                                            lineNumber: 494,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1142,7 +1274,7 @@ const ScenarioGame = ()=>{
                                             children: selectedDecision.text
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 363,
+                                            lineNumber: 495,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1150,13 +1282,13 @@ const ScenarioGame = ()=>{
                                             children: selectedDecision.consequence
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 364,
+                                            lineNumber: 496,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 361,
+                                    lineNumber: 493,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1172,7 +1304,7 @@ const ScenarioGame = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 369,
+                                            lineNumber: 501,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1185,13 +1317,13 @@ const ScenarioGame = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                            lineNumber: 373,
+                                            lineNumber: 505,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 367,
+                                    lineNumber: 499,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1201,26 +1333,26 @@ const ScenarioGame = ()=>{
                                     children: currentScenarioIndex < scenarios.length - 1 ? 'Next Scenario' : 'Complete Game'
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/tools/scenario/page.tsx",
-                                    lineNumber: 378,
+                                    lineNumber: 510,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/app/tools/scenario/page.tsx",
-                        lineNumber: 311,
+                        lineNumber: 443,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/tools/scenario/page.tsx",
-                lineNumber: 288,
+                lineNumber: 420,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/tools/scenario/page.tsx",
-        lineNumber: 269,
+        lineNumber: 401,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

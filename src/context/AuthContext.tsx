@@ -17,6 +17,10 @@ interface User {
         lastCheckIn?: string;
         daysCompleted: number;
     };
+    profileImage?: string;
+    bio?: string;
+    location?: string;
+    jobTitle?: string;
 }
 
 interface AuthContextType {
@@ -30,6 +34,7 @@ interface AuthContextType {
     updateXP: (xp: number, level?: number) => Promise<void>;
     updateProgress: (lessonId: number, completed?: boolean) => Promise<void>;
     updateChallenge: (action: 'start' | 'checkin') => Promise<void>;
+    refreshUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -131,6 +136,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
+    const refreshUser = async () => {
+        try {
+            const res = await api.get('/auth/user');
+            setUser(res.data);
+        } catch (err) {
+            console.error('Error refreshing user:', err);
+        }
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -143,7 +157,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 logout,
                 updateXP,
                 updateProgress,
-                updateChallenge
+                updateChallenge,
+                refreshUser
             }}
         >
             {children}

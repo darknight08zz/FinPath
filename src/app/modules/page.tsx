@@ -75,7 +75,7 @@ const Modules = () => {
                 <div className="space-y-4">
                     {modules.map((module, index) => {
                         const Icon = module.icon;
-                        const isCompleted = user?.completedLessons?.includes(module.id);
+                        const isCompleted = user?.completedLessons?.some((id: any) => Number(id) === module.id);
                         const moduleProgress = isCompleted ? 100 : 0; // Simple binary progress for now, can be expanded if modules have sub-steps tracked
 
                         return (

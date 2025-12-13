@@ -146,6 +146,23 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
         required: true,
         minlength: 6
     },
+    profileImage: {
+        type: String,
+        default: ""
+    },
+    bio: {
+        type: String,
+        default: "",
+        maxlength: 500
+    },
+    location: {
+        type: String,
+        default: ""
+    },
+    jobTitle: {
+        type: String,
+        default: ""
+    },
     xp: {
         type: Number,
         default: 0
@@ -185,11 +202,34 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
             type: String
         }
     ],
+    lastLogin: {
+        type: Date
+    },
+    streak: {
+        type: Number,
+        default: 0
+    },
+    joinedChallenges: {
+        type: [
+            String
+        ],
+        default: []
+    },
+    completedChallenges: {
+        type: [
+            String
+        ],
+        default: []
+    },
     createdAt: {
         type: Date,
         default: Date.now
     }
 });
+// Force model recompilation in dev to pick up schema changes
+if ("TURBOPACK compile-time truthy", 1) {
+    delete __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User;
+}
 const __TURBOPACK__default__export__ = __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User || __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].model('User', UserSchema);
 }),
 "[project]/src/app/api/user/xp/route.ts [app-route] (ecmascript)", ((__turbopack_context__) => {
@@ -233,6 +273,33 @@ async function PUT(req) {
             user.xp = xp;
             if (level) {
                 user.level = level;
+            }
+            // Reset Logic: If specifically resetting to start
+            if (xp === 0 && level === 1) {
+                user.badges = [];
+            }
+            // Gamification: Badge Unlocking
+            if (!user.badges) user.badges = [];
+            const newBadges = [];
+            // "First Steps" - First XP earned
+            if (user.xp > 0 && !user.badges.includes('🌱')) {
+                user.badges.push('🌱');
+                newBadges.push('🌱');
+            }
+            // "Level 5" - Reached Level 5
+            if (user.level >= 5 && !user.badges.includes('⭐')) {
+                user.badges.push('⭐');
+                newBadges.push('⭐');
+            }
+            // "Expert" - Reached Level 10
+            if (user.level >= 10 && !user.badges.includes('🚀')) {
+                user.badges.push('🚀');
+                newBadges.push('🚀');
+            }
+            // "Master" - Reached Level 20
+            if (user.level >= 20 && !user.badges.includes('🏆')) {
+                user.badges.push('🏆');
+                newBadges.push('🏆');
             }
             await user.save();
             // Return user without password

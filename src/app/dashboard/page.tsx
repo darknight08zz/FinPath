@@ -20,6 +20,7 @@ import {
     Zap,
     Users,
     Trophy,
+    Calculator,
 } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ThemeCustomizer } from "@/components/theme-customizer";
@@ -31,7 +32,14 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Info } from "lucide-react";
+import {
+    Sheet,
+    SheetContent,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet";
+import { Info, Home } from "lucide-react";
 
 const Dashboard = () => {
     const router = useRouter();
@@ -43,11 +51,10 @@ const Dashboard = () => {
 
     // Determine the next lesson to show
     const completedLessons = user?.completedLessons || [];
-    const currentLessonId = user?.currentLesson || 1;
 
-    // Find the module corresponding to the current lesson ID
-    // Assuming module IDs match lesson IDs for simplicity based on data structure
-    const nextModule = modules.find(m => m.id === currentLessonId) || modules[0];
+    // Find the first module that hasn't been completed yet
+    // This handles cases where users complete lessons out of order
+    const nextModule = modules.find(m => !completedLessons.includes(m.id)) || modules[0];
     const isAllCompleted = completedLessons.length >= modules.length;
 
     useEffect(() => {
@@ -70,10 +77,48 @@ const Dashboard = () => {
             <header className="border-b bg-card shadow-sm sticky top-0 z-10">
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <Button variant="ghost" size="icon">
-                            <Menu className="w-6 h-6" />
-                        </Button>
-                        <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                        <Sheet>
+                            <SheetTrigger asChild>
+                                <Button variant="ghost" size="icon">
+                                    <Menu className="w-6 h-6" />
+                                </Button>
+                            </SheetTrigger>
+                            <SheetContent side="left">
+                                <SheetHeader className="mb-6">
+                                    <SheetTitle className="text-2xl font-bold text-primary tracking-tight w-fit">
+                                        FinPath
+                                    </SheetTitle>
+                                </SheetHeader>
+                                <div className="flex flex-col gap-2">
+                                    <Link href="/dashboard" className="w-full">
+                                        <Button variant="ghost" className="w-full justify-start gap-4 text-base">
+                                            <Home className="w-5 h-5" /> Dashboard
+                                        </Button>
+                                    </Link>
+                                    <Link href="/modules" className="w-full">
+                                        <Button variant="ghost" className="w-full justify-start gap-4 text-base">
+                                            <BookOpen className="w-5 h-5" /> Learning Modules
+                                        </Button>
+                                    </Link>
+                                    <Link href="/tools" className="w-full">
+                                        <Button variant="ghost" className="w-full justify-start gap-4 text-base">
+                                            <Zap className="w-5 h-5" /> Financial Tools
+                                        </Button>
+                                    </Link>
+                                    <Link href="/community" className="w-full">
+                                        <Button variant="ghost" className="w-full justify-start gap-4 text-base">
+                                            <Users className="w-5 h-5" /> Community
+                                        </Button>
+                                    </Link>
+                                    <Link href="/profile" className="w-full">
+                                        <Button variant="ghost" className="w-full justify-start gap-4 text-base">
+                                            <User className="w-5 h-5" /> My Profile
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </SheetContent>
+                        </Sheet>
+                        <h1 className="text-2xl font-bold text-primary tracking-tight">
                             FinPath
                         </h1>
                     </div>
@@ -122,58 +167,48 @@ const Dashboard = () => {
                 {/* Quick Actions */}
                 <div className="grid md:grid-cols-3 gap-4 mb-8">
                     <Link href="/modules" className="block">
-                        <Card className="p-6 hover:shadow-lg transition-all hover:scale-105 cursor-pointer h-full border-2 hover:border-primary">
-                            <div className="flex items-center gap-4 mb-3">
-                                <div className="p-3 bg-primary/10 rounded-full">
-                                    <BookOpen className="w-6 h-6 text-primary" />
+                        <Card className="p-6 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-primary/10 bg-card/50 backdrop-blur-sm group">
+                            <div className="flex flex-col items-center text-center gap-4">
+                                <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                                    <BookOpen className="w-8 h-8" />
                                 </div>
-                                <h3 className="font-bold text-lg">Start Lesson</h3>
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                                Continue your learning journey
-                            </p>
-                            <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-                                <Clock className="w-4 h-4" />
-                                <span>5-10 mins</span>
+                                <div>
+                                    <h3 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors">Learning Modules</h3>
+                                    <p className="text-sm text-muted-foreground">Continue your financial education journey</p>
+                                </div>
                             </div>
                         </Card>
                     </Link>
 
                     <Link href="/tools" className="block">
-                        <Card className="p-6 hover:shadow-lg transition-all hover:scale-105 cursor-pointer h-full border-2 hover:border-success">
-                            <div className="flex items-center gap-4 mb-3">
-                                <div className="p-3 bg-success/10 rounded-full">
-                                    <Target className="w-6 h-6 text-success" />
+                        <Card className="p-6 hover:shadow-xl hover:shadow-success/10 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-success/10 bg-card/50 backdrop-blur-sm group">
+                            <div className="flex flex-col items-center text-center gap-4">
+                                <div className="p-4 rounded-2xl bg-success/10 text-success group-hover:bg-success group-hover:text-success-foreground transition-colors duration-300">
+                                    <Calculator className="w-8 h-8" />
                                 </div>
-                                <h3 className="font-bold text-lg">Use Tool</h3>
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                                Plan your budget or calculate investments
-                            </p>
-                            <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-                                <Zap className="w-4 h-4" />
-                                <span>Budget Planner</span>
+                                <div>
+                                    <h3 className="font-bold text-lg mb-1 group-hover:text-success transition-colors">Financial Tools</h3>
+                                    <p className="text-sm text-muted-foreground">Calculators and budget planners</p>
+                                </div>
                             </div>
                         </Card>
                     </Link>
 
                     <Link href="/community" className="block">
-                        <Card className="p-6 hover:shadow-lg transition-all hover:scale-105 cursor-pointer h-full border-2 hover:border-achievement">
-                            <div className="flex items-center gap-4 mb-3">
-                                <div className="p-3 bg-achievement/10 rounded-full">
-                                    <Users className="w-6 h-6 text-achievement" />
+                        <Card className="p-6 hover:shadow-xl hover:shadow-achievement/10 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-achievement/10 bg-card/50 backdrop-blur-sm group">
+                            <div className="flex flex-col items-center text-center gap-4">
+                                <div className="p-4 rounded-2xl bg-achievement/10 text-achievement group-hover:bg-achievement group-hover:text-achievement-foreground transition-colors duration-300">
+                                    <Users className="w-8 h-8" />
                                 </div>
-                                <h3 className="font-bold text-lg">Community</h3>
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                                Join challenges and climb the leaderboard
-                            </p>
-                            <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-                                <Trophy className="w-4 h-4" />
-                                <span>Weekly Challenges</span>
+                                <div>
+                                    <h3 className="font-bold text-lg mb-1 group-hover:text-achievement transition-colors">Community</h3>
+                                    <p className="text-sm text-muted-foreground">Join challenges and leaderboards</p>
+                                </div>
                             </div>
                         </Card>
                     </Link>
+
+
                 </div>
 
                 {/* Current Challenge */}

@@ -21,12 +21,57 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/context/AuthContext";
-import { leaderboardData, challengesData, workshopsData } from "@/data/community";
+import { challengesData, workshopsData } from "@/data/community";
+import api from "@/services/api";
+
+interface LeaderboardUser {
+    id: string;
+    rank: number;
+    name: string;
+    xp: number;
+    level: number;
+    badges: string[];
+    avatar: string;
+    streak: number;
+}
 
 const Community = () => {
     const router = useRouter();
-    const { isAuthenticated, isLoading } = useAuth();
+    const { isAuthenticated, isLoading, user } = useAuth(); // Assuming 'user' is now returned by useAuth
     const [activeTab, setActiveTab] = useState("leaderboard");
+    const [leaderboard, setLeaderboard] = useState<LeaderboardUser[]>([]);
+
+    // Real Gamification State
+    const [joinedChallenges, setJoinedChallenges] = useState<string[]>([]);
+    const [completedChallenges, setCompletedChallenges] = useState<string[]>([]);
+
+    useEffect(() => {
+        const fetchLeaderboard = async () => {
+            try {
+                const res = await api.get('/leaderboard');
+                setLeaderboard(res.data);
+            } catch (err) {
+                console.error("Failed to fetch leaderboard", err);
+                // toast.error("Failed to load leaderboard");
+            }
+        };
+
+        const fetchUserChallenges = async () => {
+            // Ideally we get this from user context, but for now we can fetch profile
+            try {
+                const res = await api.get('/auth/user');
+                setJoinedChallenges(res.data.joinedChallenges || []);
+                setCompletedChallenges(res.data.completedChallenges || []);
+            } catch (err) {
+                // Warning suppressed
+            }
+        };
+
+        if (isAuthenticated) {
+            fetchLeaderboard();
+            fetchUserChallenges();
+        }
+    }, [isAuthenticated]);
 
     useEffect(() => {
         if (!isLoading && !isAuthenticated) {
@@ -44,10 +89,31 @@ const Community = () => {
         });
     };
 
-    const handleJoinChallenge = (challengeTitle: string) => {
-        toast.success(`Joined ${challengeTitle}!`, {
-            description: "Good luck! Track your progress on the dashboard.",
-        });
+    const handleJoinChallenge = async (challengeId: string, challengeTitle: string) => {
+        try {
+            const res = await api.post('/challenges/join', { challengeId });
+            setJoinedChallenges(res.data.joinedChallenges);
+            toast.success(`Joined ${challengeTitle}!`, {
+                description: "Good luck! Track your progress.",
+            });
+        } catch (err: any) {
+            console.error(err);
+            toast.error(err.response?.data?.msg || "Failed to join challenge");
+        }
+    };
+
+    const handleCompleteChallenge = async (challengeId: string) => {
+        try {
+            const res = await api.post('/challenges/complete', { challengeId, xpReward: 500 }); // Hardcoded 500 XP for now
+            setJoinedChallenges(res.data.joinedChallenges);
+            setCompletedChallenges(res.data.completedChallenges);
+            toast.success(`Challenge Completed!`, {
+                description: `You earned 500 XP! New XP: ${res.data.xp}`,
+            });
+        } catch (err: any) {
+            console.error(err);
+            toast.error(err.response?.data?.msg || "Failed to complete challenge");
+        }
     };
 
     return (
@@ -98,41 +164,47 @@ const Community = () => {
                             </div>
 
                             <div className="space-y-4">
-                                {leaderboardData.map((user) => (
-                                    <div
-                                        key={user.id}
-                                        className={`flex items-center p-4 rounded-lg border transition-all hover:bg-muted/50 ${user.rank <= 3 ? "border-achievement/50 bg-achievement/5" : "border-border"
-                                            }`}
-                                    >
-                                        <div className={`w-8 h-8 flex items-center justify-center font-bold rounded-full mr-4 ${user.rank === 1 ? "bg-yellow-500 text-white" :
-                                            user.rank === 2 ? "bg-gray-400 text-white" :
-                                                user.rank === 3 ? "bg-amber-700 text-white" :
-                                                    "bg-muted text-muted-foreground"
-                                            }`}>
-                                            {user.rank}
-                                        </div>
-
-                                        <Avatar className="w-10 h-10 border-2 border-background mr-4">
-                                            <AvatarFallback>{user.avatar}</AvatarFallback>
-                                        </Avatar>
-
-                                        <div className="flex-1">
-                                            <div className="flex items-center gap-2">
-                                                <h3 className="font-bold">{user.name}</h3>
-                                                <div className="flex gap-1">
-                                                    {user.badges.map((badge, i) => (
-                                                        <span key={i} className="text-sm" title="Badge">{badge}</span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                            <p className="text-sm text-muted-foreground">Level {user.level}</p>
-                                        </div>
-
-                                        <div className="text-right">
-                                            <p className="font-bold text-primary">{user.xp.toLocaleString()} XP</p>
-                                        </div>
+                                {leaderboard.length === 0 ? (
+                                    <div className="text-center py-8 text-muted-foreground">
+                                        Loading leaderboard...
                                     </div>
-                                ))}
+                                ) : (
+                                    leaderboard.map((user: LeaderboardUser) => (
+                                        <div
+                                            key={user.id}
+                                            className={`flex items-center p-4 rounded-lg border transition-all hover:bg-muted/50 ${user.rank <= 3 ? "border-achievement/50 bg-achievement/5" : "border-border"
+                                                }`}
+                                        >
+                                            <div className={`w-8 h-8 flex items-center justify-center font-bold rounded-full mr-4 ${user.rank === 1 ? "bg-yellow-500 text-white" :
+                                                user.rank === 2 ? "bg-gray-400 text-white" :
+                                                    user.rank === 3 ? "bg-amber-700 text-white" :
+                                                        "bg-muted text-muted-foreground"
+                                                }`}>
+                                                {user.rank}
+                                            </div>
+
+                                            <Avatar className="w-10 h-10 border-2 border-background mr-4">
+                                                <AvatarFallback>{user.avatar}</AvatarFallback>
+                                            </Avatar>
+
+                                            <div className="flex-1">
+                                                <div className="flex items-center gap-2">
+                                                    <h3 className="font-bold">{user.name}</h3>
+                                                    <div className="flex gap-1">
+                                                        {user.badges.map((badge: string, i: number) => (
+                                                            <span key={i} className="text-sm" title="Badge">{badge}</span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                                <p className="text-sm text-muted-foreground">Level {user.level} {user.streak > 0 && `• 🔥 ${user.streak} Day Streak`}</p>
+                                            </div>
+
+                                            <div className="text-right">
+                                                <p className="font-bold text-primary">{user.xp.toLocaleString()} XP</p>
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
                             </div>
                         </Card>
                     </TabsContent>
@@ -142,6 +214,9 @@ const Community = () => {
                         <div className="grid gap-6">
                             {challengesData.map((challenge) => {
                                 const Icon = challenge.icon;
+                                const isJoined = joinedChallenges.includes(challenge.id);
+                                const isCompleted = completedChallenges.includes(challenge.id);
+
                                 return (
                                     <Card key={challenge.id} className="p-6 border-2 hover:border-primary transition-colors">
                                         <div className="flex items-start justify-between mb-4">
@@ -179,7 +254,20 @@ const Community = () => {
                                                 <Medal className="w-4 h-4" />
                                                 {challenge.reward}
                                             </div>
-                                            <Button onClick={() => handleJoinChallenge(challenge.title)}>Join Challenge</Button>
+
+                                            {isCompleted ? (
+                                                <Button disabled variant="outline" className="border-achievement text-achievement bg-achievement/10">
+                                                    <Medal className="w-4 h-4 mr-2" /> Completed
+                                                </Button>
+                                            ) : isJoined ? (
+                                                <Button onClick={() => handleCompleteChallenge(challenge.id)}>
+                                                    Mark Complete
+                                                </Button>
+                                            ) : (
+                                                <Button onClick={() => handleJoinChallenge(challenge.id, challenge.title)}>
+                                                    Join Challenge
+                                                </Button>
+                                            )}
                                         </div>
                                     </Card>
                                 );

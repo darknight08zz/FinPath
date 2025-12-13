@@ -146,6 +146,23 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
         required: true,
         minlength: 6
     },
+    profileImage: {
+        type: String,
+        default: ""
+    },
+    bio: {
+        type: String,
+        default: "",
+        maxlength: 500
+    },
+    location: {
+        type: String,
+        default: ""
+    },
+    jobTitle: {
+        type: String,
+        default: ""
+    },
     xp: {
         type: Number,
         default: 0
@@ -185,6 +202,25 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
             type: String
         }
     ],
+    lastLogin: {
+        type: Date
+    },
+    streak: {
+        type: Number,
+        default: 0
+    },
+    joinedChallenges: {
+        type: [
+            String
+        ],
+        default: []
+    },
+    completedChallenges: {
+        type: [
+            String
+        ],
+        default: []
+    },
     createdAt: {
         type: Date,
         default: Date.now

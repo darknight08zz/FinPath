@@ -76,6 +76,23 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
         required: true,
         minlength: 6
     },
+    profileImage: {
+        type: String,
+        default: ""
+    },
+    bio: {
+        type: String,
+        default: "",
+        maxlength: 500
+    },
+    location: {
+        type: String,
+        default: ""
+    },
+    jobTitle: {
+        type: String,
+        default: ""
+    },
     xp: {
         type: Number,
         default: 0
@@ -115,11 +132,34 @@ const UserSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongoos
             type: String
         }
     ],
+    lastLogin: {
+        type: Date
+    },
+    streak: {
+        type: Number,
+        default: 0
+    },
+    joinedChallenges: {
+        type: [
+            String
+        ],
+        default: []
+    },
+    completedChallenges: {
+        type: [
+            String
+        ],
+        default: []
+    },
     createdAt: {
         type: Date,
         default: Date.now
     }
 });
+// Force model recompilation in dev to pick up schema changes
+if ("TURBOPACK compile-time truthy", 1) {
+    delete __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User;
+}
 const __TURBOPACK__default__export__ = __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].models.User || __TURBOPACK__imported__module__$5b$externals$5d2f$mongoose__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].model('User', UserSchema);
 }),
 "[project]/src/lib/db.ts [app-route] (ecmascript)", ((__turbopack_context__) => {

@@ -40,12 +40,15 @@ const themes = [
 
 export function ThemeCustomizer() {
     const [mounted, setMounted] = React.useState(false)
-    const [activeTheme, setActiveTheme] = React.useState(themes[0])
+    const [activeTheme, setActiveTheme] = React.useState(themes[2]) // Default to Orange
 
     React.useEffect(() => {
         setMounted(true)
-        // Check if there is a saved theme in localStorage or similar if we want persistence beyond session
-        // For now, we just default to Blue or whatever is set in CSS
+        // Apply default theme (Orange) on mount if no persistence logic exists yet
+        const root = document.documentElement
+        root.style.setProperty("--primary", themes[2].color)
+        root.style.setProperty("--primary-foreground", themes[2].foreground)
+        root.style.setProperty("--ring", themes[2].color)
     }, [])
 
     const updateTheme = (theme: typeof themes[0]) => {

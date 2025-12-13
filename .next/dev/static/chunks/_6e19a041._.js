@@ -528,12 +528,12 @@ const lessons = {
         {
             type: "intro",
             title: "Understanding Your Income",
-            content: "In this lesson, you'll learn the difference between gross income and net income, and why this matters for your financial planning."
+            content: "In this lesson, you'll learn the difference between gross income and net income, and why this matters for your financial planning. We'll also explore different budgeting methods to find one that fits your personality."
         },
         {
             type: "content",
             title: "What is Gross Income?",
-            content: "Gross income is the total amount of money you earn before any deductions are taken out. This includes your salary, bonuses, tips, and any other earnings.\n\nFor example, if your job offers you $50,000 per year, that's your gross income."
+            content: "Gross income is the total amount of money you earn before any deductions are taken out. This includes your salary, bonuses, tips, and any other earnings.\n\nFor example, if your job offers you $50,000 per year, that's your gross income. However, you never actually see this full amount in your bank account."
         },
         {
             type: "quiz",
@@ -551,7 +551,50 @@ const lessons = {
         {
             type: "content",
             title: "What is Net Income?",
-            content: "Net income (also called take-home pay) is what's left after all deductions:\n\n• Income taxes\n• Social Security\n• Medicare\n• Health insurance\n• Retirement contributions\n\nThis is the actual amount that goes into your bank account."
+            content: "Net income (also called take-home pay) is what's left after all deductions:\n\n• Income taxes\n• Social Security\n• Medicare\n• Health insurance\n• Retirement contributions\n\nThis is the actual amount that goes into your bank account and the number you MUST use for budgeting."
+        },
+        {
+            type: "content",
+            title: "Needs vs. Wants",
+            content: "A fundamental part of budgeting is distinguishing between necessities and luxuries.\n\n• **Needs**: Rent/Mortgage, Utilities, Basic Groceries, Transportation, Insurance, Minimum Debt Payments.\n• **Wants**: Dining out, Streaming Services, Designer Clothes, Travel, Upgraded Tech.\n\nBe honest with yourself: Is that daily latte a need or a want?"
+        },
+        {
+            type: "tip",
+            title: "The 24-Hour Rule",
+            content: "For any 'want' over $50, wait 24 hours before buying it. 80% of the time, the urge to purchase will fade, saving you money without feeling deprived."
+        },
+        {
+            type: "content",
+            title: "Zero-Based Budgeting",
+            content: " This method involves giving every dollar a job. \n\nFormula: Income - Expenses = $0.\n\nIf you have $3,000 income and $2,500 in expenses, you assign the remaining $500 to savings or debt. You don't leave money 'floating' in your account, which often leads to mindless spending."
+        },
+        {
+            type: "content",
+            title: "The Envelope System",
+            content: "A classic way to control variable spending (like groceries or entertainment). You put a set amount of cash in an envelope for the month. When the envelope is empty, you stop spending in that category.\n\n**Modern Twist**: Use a separate debit card or a specific bank account for these variable expenses."
+        },
+        {
+            type: "content",
+            title: "Sinking Funds",
+            content: "These are savings buckets for known upcoming expenses. Instead of being surprised by a $600 car insurance bill every 6 months, you save $100/month into a 'Car Insurance' sinking fund.\n\nIt smooths out your monthly cash flow and prevents budget shocks."
+        },
+        {
+            type: "quiz",
+            title: "Budgeting Logic",
+            question: "Which budgeting method assigns every single dollar a specific purpose?",
+            options: [
+                "The Envelope System",
+                "Zero-Based Budgeting",
+                "The 50/30/20 Rule",
+                "Pay Yourself First"
+            ],
+            correctAnswer: 1,
+            explanation: "Zero-Based Budgeting ensures that Income minus Expenses equals Zero, meaning every dollar is deliberately allocated to spending or saving."
+        },
+        {
+            type: "content",
+            title: "Dealing with Irregular Income",
+            content: "If you're a freelancer or work on commission, base your budget on your *lowest* expected monthly income. In high-earning months, put the surplus directly into savings or a 'buffer' fund to cover you during lean months."
         },
         {
             type: "quiz",
@@ -574,7 +617,7 @@ const lessons = {
         {
             type: "complete",
             title: "Lesson Complete!",
-            content: "Great job! You've learned the fundamental difference between gross and net income. This knowledge will help you create more accurate budgets.",
+            content: "Great job! You've learned about income types, needs vs. wants, and powerful strategies like Zero-Based Budgeting and Sinking Funds. You're ready to take control!",
             xpEarned: 150
         }
     ],
@@ -582,17 +625,60 @@ const lessons = {
         {
             type: "intro",
             title: "Demystifying Credit",
-            content: "Credit can be a powerful tool or a dangerous trap. In this lesson, we'll break down how credit works and how to make it work for you."
+            content: "Credit can be a powerful tool or a dangerous trap. In this lesson, we'll break down how credit works, how scores are calculated, and how to build a rock-solid history."
         },
         {
             type: "content",
             title: "What is a Credit Score?",
-            content: "Your credit score is a three-digit number (usually between 300 and 850) that tells lenders how likely you are to repay debt. Think of it as your financial report card.\n\n• 720+: Excellent\n• 690-719: Good\n• 630-689: Fair\n• <629: Poor"
+            content: "Your credit score is a three-digit number (usually between 300 and 850) that tells lenders how likely you are to repay debt. Think of it as your financial report card.\n\n• 720+: Excellent (Best rates)\n• 690-719: Good\n• 630-689: Fair\n• <629: Poor (High rates or denial)"
         },
         {
             type: "content",
-            title: "What Makes Up Your Score?",
-            content: "Your FICO score is calculated based on five factors:\n\n1. Payment History (35%): Do you pay on time?\n2. Amounts Owed (30%): How much of your available credit are you using?\n3. Length of Credit History (15%): How long have you had credit?\n4. New Credit (10%): Have you opened many accounts recently?\n5. Credit Mix (10%): Do you have different types of credit?"
+            title: "The Big 5 Factors",
+            content: "Your FICO score is calculated based on five factors:\n\n1. **Payment History (35%)**: The most critical factor. Pay. On. Time.\n2. **Amounts Owed (30%)**: Credit utilization ratio.\n3. **Length of Credit History (15%)**: Older accounts are better.\n4. **New Credit (10%)**: Avoid opening too many cards at once.\n5. **Credit Mix (10%)**: A mix of cards and loans is healthy."
+        },
+        {
+            type: "content",
+            title: "Hard vs. Soft Inquiries",
+            content: "Not all credit checks are equal:\n\n• **Soft Inquiry**: Checking your own score, or employer background checks. **Does NOT affect your score.**\n• **Hard Inquiry**: Applying for a new loan or credit card. **Lowers your score slightly** (usually 5 points) and stays on report for 2 years."
+        },
+        {
+            type: "content",
+            title: "The 30% Utilization Rule",
+            content: "Credit utilization is how much of your limit you use. If you have a $10,000 limit and a $5,000 balance, your utilization is 50%.\n\n**Aim for under 30%** (under 10% is even better). High utilization signals financial stress to lenders, even if you pay in full every month."
+        },
+        {
+            type: "quiz",
+            title: "Utilization Check",
+            question: "You have a credit card with a $2,000 limit. To keep your utilization under 30%, what is the maximum balance you should carry?",
+            options: [
+                "$1,000",
+                "$600",
+                "$300",
+                "$1,400"
+            ],
+            correctAnswer: 1,
+            explanation: "$600 is 30% of $2,000. keeping your balance below this helps maximize your credit score."
+        },
+        {
+            type: "content",
+            title: "Authorized Users",
+            content: "Want to boost your score? ask a parent or partner with excellent credit to add you as an 'authorized user' on their oldest card.\n\nYou inherit their positive payment history for that card instantly! (Just make sure they actually pay on time)."
+        },
+        {
+            type: "content",
+            title: "Secured Credit Cards",
+            content: "If you have no credit or bad credit, start with a Secured Card. You put down a cash deposit (e.g., $200) which becomes your credit limit. It acts like a debit card but reports to credit bureaus, building your history."
+        },
+        {
+            type: "tip",
+            title: "Never Close Old Cards",
+            content: "Closing your oldest credit card shortens your 'Length of Credit History' and lowers your total available credit, both of which can hurt your score. If it has no annual fee, keep it open and buy a small item once a year to keep it active."
+        },
+        {
+            type: "content",
+            title: "Disputing Errors",
+            content: "1 in 5 people have errors on their credit report. If you see an account you didn't open or a 'late' payment that was on time, file a dispute immediately with the credit bureau. They have 30 days to verify it or remove it."
         },
         {
             type: "quiz",
@@ -608,14 +694,9 @@ const lessons = {
             explanation: "Payment history accounts for 35% of your score. Missing even one payment can significantly drop your score."
         },
         {
-            type: "tip",
-            title: "Utilization Rule",
-            content: "Try to keep your credit utilization below 30%. If you have a $1,000 limit, try not to carry a balance of more than $300."
-        },
-        {
             type: "complete",
             title: "Lesson Complete!",
-            content: "You now understand the building blocks of credit. Use this knowledge to build a strong financial reputation!",
+            content: "You now have the blueprint for excellent credit. Pay on time, keep balances low, and watch your score climb!",
             xpEarned: 200
         }
     ],
@@ -623,12 +704,55 @@ const lessons = {
         {
             type: "intro",
             title: "The Art of Saving",
-            content: "Saving isn't just about spending less; it's about building security and freedom. Let's explore strategies to make saving effortless."
+            content: "Saving isn't just about depriving yourself; it's about buying freedom. Let's master the art of keeping more of what you earn."
         },
         {
             type: "content",
             title: "Pay Yourself First",
-            content: "Instead of saving what's left after spending, spend what's left after saving. Set up an automatic transfer to your savings account on payday.\n\nTreat your savings contribution like a mandatory bill that must be paid."
+            content: "This is the Golden Rule. Instead of saving what's left after spending, spend what's left after saving.\n\nAction: Set up an automatic transfer to your savings account to happen on the SAME day as your paycheck deposit. You won't miss money you never saw."
+        },
+        {
+            type: "content",
+            title: "The Power of High-Yield Savings Accounts (HYSA)",
+            content: "Stop leaving money in a standard checking account earning 0.01%.\n\nA HYSA pays 10-20x more interest (e.g., 4-5% APY). On $10,000, that's the difference between earning $1 and earning $500 a year for doing nothing!"
+        },
+        {
+            type: "quiz",
+            title: "Interest Logic",
+            question: "Why is a HYSA better than a regular savings account?",
+            options: [
+                "It has cooler debit cards",
+                "It allows unlimited withdrawals",
+                "It pays significantly higher interest rates",
+                "It invests your money in stocks"
+            ],
+            correctAnswer: 2,
+            explanation: "HYSAs offer much higher interest rates, allowing your idle cash to grow faster while staying safe (FDIC insured)."
+        },
+        {
+            type: "content",
+            title: "Micro-Saving Apps",
+            content: "Apps like Acorns or Chime offer 'Round-Ups'. If you spend $4.50 on coffee, they round it up to $5.00 and save the $0.50.\n\nIt sounds small, but these tiny amounts can add up to hundreds of dollars a year effortlessly."
+        },
+        {
+            type: "content",
+            title: "The 'No-Spend' Challenge",
+            content: "Gamify your savings! Pick one day a week (e.g., 'Zero-Dollar Tuesdays') where you spend $0 unrelated to fixed bills. Eat leftovers, walk instead of drive, read a book.\n\nAdvanced Level: Try a No-Spend Weekend once a month."
+        },
+        {
+            type: "content",
+            title: "Brand Name vs. Generic",
+            content: "In many cases, generic medicines and food products have the EXACT same ingredients as brand names. Check the labels. Buying generic can lower your grocery bill by 20-30% instantly."
+        },
+        {
+            type: "content",
+            title: "Subscription Audit",
+            content: "We all have 'Zombie Subscriptions'—services we pay for but don't use. \n\nCheck your bank statement for the last 3 months. Cancel anything you haven't used in 30 days. You can always resubscribe later if you miss it."
+        },
+        {
+            type: "content",
+            title: "Meal Prepping",
+            content: "The average commercial lunch costs $15. Bringing leftovers costs $3.\n\nSaving $12/day x 5 days = $60/week = $3,120/year. That's a vacation funded just by making a sandwich."
         },
         {
             type: "quiz",
@@ -644,14 +768,14 @@ const lessons = {
             explanation: "It means prioritizing your savings goals by setting aside money as soon as you get paid, ensuring you actually save."
         },
         {
-            type: "content",
-            title: "The Power of Automation",
-            content: "Willpower is a limited resource. Automation removes the need for willpower.\n\n• Auto-transfer to savings\n• Auto-invest in 401(k)/IRA\n• Auto-pay bills\n\nWhen you don't see the money in your checking account, you learn to live without it."
+            type: "tip",
+            title: "Negotiate Your Bills",
+            content: "Call your internet or phone provider once a year. Ask: 'I've been a loyal customer, is there a better rate available?' Often, they have retention offers just waiting for you to ask."
         },
         {
             type: "complete",
             title: "Lesson Complete!",
-            content: "By automating your savings, you're building wealth on autopilot. Great work!",
+            content: "From HYSAs to meal prepping, you now have a toolkit of strategies to supercharge your savings rate!",
             xpEarned: 150
         }
     ],
@@ -659,17 +783,22 @@ const lessons = {
         {
             type: "intro",
             title: "Investing 101",
-            content: "Investing is how you make your money work for you. It's the key to building long-term wealth and beating inflation."
+            content: "Investing puts your money to work. It's the only reliable way to build wealth that outpaces inflation over the long term."
         },
         {
             type: "content",
-            title: "Risk vs. Reward",
-            content: "All investing involves risk. Generally, higher potential returns come with higher risk.\n\n• Cash: Low risk, low return (loses value to inflation)\n• Bonds: Medium risk, medium return\n• Stocks: Higher risk, higher potential return"
+            title: "Inflation: The Silent Killer",
+            content: "If you bury $100 in the backyard, 20 years later it still says '$100', but it buys only half as much stuff.\n\nInvesting is a defense against inflation. You NEED your money to grow just to maintain its purchasing power."
+        },
+        {
+            type: "content",
+            title: "Asset Classes",
+            content: "• **Stocks**: Ownership in companies. High risk, high growth.\n• **Bonds**: Loans to governments/companies. Medium risk, steady income.\n• **Cash**: Very low risk, loses value to inflation.\n• **Real Estate**: Tangible property.\n• **Commodities**: Gold, oil, corn."
         },
         {
             type: "content",
             title: "Diversification",
-            content: "Don't put all your eggs in one basket. Diversification means spreading your money across different investments to reduce risk.\n\nIf one company fails, you don't lose everything because you own hundreds of others."
+            content: "'Don't put all your eggs in one basket.'\n\nIf you own one stock (e.g., Tech Company X) and it goes bankrupt, you lose everything. If you own an Index Fund (500 companies), and Tech Company X fails, you barely notice because the other 499 might be doing fine."
         },
         {
             type: "quiz",
@@ -685,9 +814,34 @@ const lessons = {
             explanation: "Diversification protects your portfolio. If one sector crashes, others might rise or stay stable, smoothing out your returns."
         },
         {
+            type: "content",
+            title: "Active vs. Passive Investing",
+            content: "• **Active**: Trying to pick 'winning' stocks or time the market to beat the average. (Very hard, high fees).\n• **Passive**: Buying the WHOLE market (via Index Funds) and accepting the average return. (Easy, low fees, historically better for 90% of investors)."
+        },
+        {
+            type: "content",
+            title: "Dollar Cost Averaging (DCA)",
+            content: "Instead of trying to time the market (buy low, sell high), invest a fixed amount every month (e.g., $500).\n\nWhen prices are high, you buy fewer shares. When prices are low, you buy MORE shares. Over time, this lowers your average cost per share automatically."
+        },
+        {
+            type: "content",
+            title: "Tax-Advantaged Accounts",
+            content: "Use these 'buckets' to pay less tax:\n\n• **401(k)**: Employer sponsored, often with a 'match' (free money!).\n• **IRA (Individual Retirement Account)**: You open it yourself.\n• **Roth IRA**: You pay tax now, but tax-free withdrawals in retirement."
+        },
+        {
+            type: "content",
+            title: "The Impact of Fees",
+            content: "Investment fees (Expense Ratios) eat your profits. A 1% fee sounds small, but over 30 years, it can reduce your final portfolio value by 25%!\n\nAim for low-cost index funds with expense ratios under 0.10%."
+        },
+        {
+            type: "tip",
+            title: "Time in the Market",
+            content: "Missing just the 10 best days in the market over 20 years can cut your returns in half. Stay invested through the ups and downs. 'Time in the market beats timing the market.'"
+        },
+        {
             type: "complete",
             title: "Lesson Complete!",
-            content: "You've taken the first step into the world of investing. Remember: Time in the market beats timing the market.",
+            content: "You've learned the pillars of investing: Diversify, keep costs low, and stay the course. Your future self thanks you!",
             xpEarned: 250
         }
     ],
@@ -695,12 +849,12 @@ const lessons = {
         {
             type: "intro",
             title: "Setting Financial Goals",
-            content: "A goal without a plan is just a wish. Let's learn how to set financial goals that you'll actually achieve."
+            content: "A goal without a plan is just a wish. Let's learn to set precise targets and build the roadmap to reach them."
         },
         {
             type: "content",
             title: "SMART Goals",
-            content: "Make your goals SMART:\n\n• Specific: 'Save $5,000' vs 'Save money'\n• Measurable: Trackable progress\n• Achievable: Realistic for your income\n• Relevant: Aligns with your values\n• Time-bound: Has a deadline"
+            content: "Make your goals SMART:\n\n• **Specific**: 'Save $5,000' vs 'Save money'\n• **Measurable**: Trackable progress\n• **Achievable**: Realistic for your income\n• **Relevant**: Aligns with your values\n• **Time-bound**: Has a deadline (e.g., 'by Dec 31st')"
         },
         {
             type: "quiz",
@@ -716,9 +870,44 @@ const lessons = {
             explanation: "This goal is Specific ($10k down payment), Measurable ($10k), Time-bound (Dec 31st), and presumably Achievable/Relevant."
         },
         {
+            type: "content",
+            title: "Time Horizons",
+            content: "Categorize goals by time:\n\n• **Short-term (< 1 year)**: Emergency fund, vacation. (Keep in Cash/Savings)\n• **Medium-term (1-5 years)**: Car, House down payment. (CDs, Bonds, Conservative mix)\n• **Long-term (10+ years)**: Retirement. (Stocks/Equities for growth)"
+        },
+        {
+            type: "content",
+            title: "Visualize Your Success",
+            content: "Psychology matters. Create a vision board or rename your savings accounts. Instead of 'Savings Account 1', name it 'Trip to Japan 2025'. Seeing the purpose of the money makes it harder to raid for impulse buys."
+        },
+        {
+            type: "content",
+            title: "Breaking it Down",
+            content: "Big goals are scary. Break them down.\n\nGoal: $12,000 in one year.\nMonthly: $1,000.\nWeekly: $250.\nDaily: $35.\n\nCan you find $35 a day? That feels much more manageable than $12,000."
+        },
+        {
+            type: "content",
+            title: "Accountability Partners",
+            content: "Share your goals with a friend or partner. You are 65% more likely to meet a goal if you commit to someone. If you have a specific accountability appointment with them, you are 95% likely to succeed!"
+        },
+        {
+            type: "content",
+            title: "The 'Why' Factor",
+            content: "When motivation fades, your 'Why' keeps you going. \n\nDon't just save for 'retirement'. Save for 'freedom to travel' or 'security for my family'. distinct emotional connection drives action."
+        },
+        {
+            type: "content",
+            title: "Financial Independence (FIRE)",
+            content: "A popular long-term goal is FIRE (Financial Independence, Retire Early). Ideally, having 25x your annual expenses invested allows you to live off the returns indefinitely."
+        },
+        {
+            type: "tip",
+            title: "Review and Adjust",
+            content: "Life changes. Review your goals quarterly. It's okay to change them! If you no longer want to buy a house, stop saving for it and redirect that money to a new passion."
+        },
+        {
             type: "complete",
             title: "Lesson Complete!",
-            content: "With SMART goals, you have a roadmap to success. Now go set your first target!",
+            content: "You've turned vague wishes into concrete plans. Now execute!",
             xpEarned: 100
         }
     ],
@@ -726,17 +915,60 @@ const lessons = {
         {
             type: "intro",
             title: "Mastering Your Money Mindset",
-            content: "Your beliefs about money drive your financial decisions. Let's explore how to cultivate a healthy money mindset."
+            content: "Your beliefs about money drive your financial decisions. Let's explore how to cultivate a healthy money mindset that serves you."
         },
         {
             type: "content",
             title: "Scarcity vs. Abundance",
-            content: "A scarcity mindset focuses on what you lack ('I'll never have enough'). An abundance mindset focuses on possibility ('How can I afford this?').\n\nShifting your language from 'I can't' to 'How can I' opens up creative solutions."
+            content: "A scarcity mindset focuses on what you lack ('I'll never have enough', 'Money is evil'). An abundance mindset focuses on possibility ('How can I afford this?', 'Money is a tool for good').\n\nShifting your language from 'I can't' to 'How can I' opens up creative solutions."
+        },
+        {
+            type: "content",
+            title: "Money Scripts",
+            content: "We all have 'scripts' we learned in childhood. \n\n• **Avoidance**: 'I don't look at my bills.'\n• **Worship**: 'More money will solve all my problems.'\n• **Status**: 'My self-worth equals my net worth.'\n• **Vigilance**: 'I must save every penny or disaster will strike.'\n\nIdentifying your script is the first step to rewriting it."
+        },
+        {
+            type: "content",
+            title: "Lifestyle Creep",
+            content: "Also known as the Hedonic Treadmill. As you earn more, you spend more, so you never actually get ahead.\n\n**The Fix**: When you get a raise, save 50% of the increase automatically. Enjoy the other 50%."
+        },
+        {
+            type: "quiz",
+            title: "Mindset Check",
+            question: "What is 'Lifestyle Creep'?",
+            options: [
+                "Walking slowly through expensive stores",
+                "Assuming your expenses must rise to match your income",
+                "Buying creepy decorations",
+                "A type of inflation"
+            ],
+            correctAnswer: 1,
+            explanation: "Lifestyle creep happens when increased income leads to increased spending, neutralizing your ability to build wealth."
+        },
+        {
+            type: "content",
+            title: "The Comparison Thief",
+            content: "'Comparison is the thief of joy.' Social media shows you everyone's highlight reel, not their bloopers (or detailed credit card debt).\n\nFocus on your own race. Your neighbor with the new BMW might be drowning in payments."
+        },
+        {
+            type: "content",
+            title: "Delayed Gratification",
+            content: "The ability to say 'no' now for a better 'yes' later is the #1 predictor of financial success.\n\nTry it: Want a new phone? Challenge yourself to wait 30 days. If you still want it, buy it. Often, the impulse fades."
+        },
+        {
+            type: "content",
+            title: "Investing in Yourself",
+            content: "You are your greatest asset. Spending money on education, health, or skills is not an 'expense'—it's an investment with infinite ROI.\n\nDon't be cheap with your health or your brain."
         },
         {
             type: "tip",
-            title: "Pause Before Purchase",
-            content: "Implement a 24-hour rule for non-essential purchases. This simple pause helps separate impulse from genuine need."
+            title: "Gratitude Practice",
+            content: "Start a 'Financial Gratitude Journal'. Every Friday, write down 3 things your money bought you that you are thankful for (e.g., 'Warm home', 'Coffee with a friend'). It shifts your focus from 'Not enough' to 'Enough'."
+        },
+        {
+            type: "content",
+            title: "Mindful Spending",
+            content: "Before tapping your card, ask: 'Is this purchase aligned with my values?'\n\nIf you value travel but spend $200/month on cable TV you never watch, your spending is misaligned."
         },
         {
             type: "complete",
@@ -749,12 +981,17 @@ const lessons = {
         {
             type: "intro",
             title: "The 50/30/20 Rule",
-            content: "A simple, intuitive framework for managing your money without complex spreadsheets."
+            content: "A simple, intuitive framework for managing your money without complex spreadsheets. Perfect for beginners."
         },
         {
             type: "content",
             title: "The Breakdown",
-            content: "The rule suggests dividing your after-tax income into three buckets:\n\n• 50% for Needs (Rent, Groceries, Utilities)\n• 30% for Wants (Dining out, Hobbies, Entertainment)\n• 20% for Savings & Debt Repayment"
+            content: "The rule suggests dividing your *after-tax* (Net) income into three buckets:\n\n• **50% for Needs** (Rent, Groceries, Utilities, Insurance)\n• **30% for Wants** (Dining out, Hobbies, Streaming, Travel)\n• **20% for Goals** (Savings, Investments, Extra Debt Payments)"
+        },
+        {
+            type: "content",
+            title: "Real World Example",
+            content: "You take home $4,000/month.\n\n• **Needs**: $2,000 max.\n• **Wants**: $1,200 max.\n• **Goals**: $800 minimum.\n\nIf your rent is $1,800, you only have $200 left for other needs. This forces you to prioritize."
         },
         {
             type: "quiz",
@@ -768,6 +1005,31 @@ const lessons = {
             ],
             correctAnswer: 1,
             explanation: "20% of $3,000 is $600. This amount should go towards savings, investments, or extra debt payments."
+        },
+        {
+            type: "content",
+            title: "High Cost of Living Areas",
+            content: "Living in NYC or SF? Your 'Needs' might be 60-70% just due to rent.\n\nThat's okay! Adjust the rule. Maybe try 60/20/20 or 70/20/10. The key is to keep the 'Goals' percentage as high as possible, even if 'Wants' have to shrink."
+        },
+        {
+            type: "content",
+            title: "Where Does Debt Go?",
+            content: "• **Minimum Payments**: Go in the **50% Needs** bucket (you MUST pay them).\n• **Extra Payments**: Go in the **20% Goals** bucket (this accelerates your freedom)."
+        },
+        {
+            type: "content",
+            title: "The Grey Areas",
+            content: "Is a gym membership a Need or a Want? \n\nTechnically a Want. You can exercise for free. But if it keeps you sane, prioritize it in your 30%. Be honest with your categorization."
+        },
+        {
+            type: "content",
+            title: "Automate The Split",
+            content: "Don't do the math every month. Set up your direct deposit to split automatically:\n\n• 20% to Savings Account\n• 80% to Checking Account\n\nThen live off what lands in checking."
+        },
+        {
+            type: "content",
+            title: "Handling Bonuses",
+            content: "Got a $1,000 bonus? The rule says:\n\n• $500 to boring stuff (or debt)\n• $300 for fun\n• $200 to savings\n\nOr, be a superhero and put 100% to debt/savings!"
         },
         {
             type: "complete",
@@ -788,6 +1050,11 @@ const lessons = {
             content: "Small leaks sink great ships. That $5 daily coffee is $1,800 a year. Tracking helps you identify these leaks.\n\nUse an app, a spreadsheet, or a notebook. The method doesn't matter; consistency does."
         },
         {
+            type: "content",
+            title: "Manual vs. Automatic",
+            content: "• **Automatic (Apps)**: Links to bank, categorizes for you. Pros: Easy, comprehensive. Cons: Passive, you might ignore the notifications.\n• **Manual (Excel/Notebook)**: You type every expense. Pros: High awareness, 'pain of paying'. Cons: Time-consuming."
+        },
+        {
             type: "quiz",
             title: "Awareness Check",
             question: "What is the primary benefit of tracking expenses?",
@@ -799,6 +1066,36 @@ const lessons = {
             ],
             correctAnswer: 2,
             explanation: "Tracking creates awareness. Once you see where money is going, you can make conscious choices to redirect it."
+        },
+        {
+            type: "content",
+            title: "The 'Latte Factor'",
+            content: "It's not just about lattes. It's about any small, habitual spend that adds up. Cigarettes, vending machine snacks, in-game purchases.\n\nIdentify your 'Latte Factor' and cut it by 50%."
+        },
+        {
+            type: "content",
+            title: "Category Creep",
+            content: "Be specific. Don't just have a 'Misc' category. 'Misc' is a black hole where budgets go to die.\n\nBreak it down: 'Gifts', 'Home Repair', 'Parking'."
+        },
+        {
+            type: "content",
+            title: "Tracking Net Worth",
+            content: "Expense tracking is about flow. Net Worth tracking is about accumulation.\n\nAssets - Liabilities = Net Worth.\n\nTrack this quarterly to see the big picture."
+        },
+        {
+            type: "content",
+            title: "Subscription Fatigue",
+            content: "Use your tracker to spot recurring charges. Did you know you're still paying for that gym you moved away from 6 months ago? Your tracker knows."
+        },
+        {
+            type: "content",
+            title: "Privacy Concerns",
+            content: "If you're wary of linking bank accounts to apps, manual tracking (exporting CSVs from your bank) is 100% private and secure."
+        },
+        {
+            type: "tip",
+            title: "Weekly Review",
+            content: "Set a 'Money Date' with yourself every Sunday evening. Review last week's spending. Did you blow the dining budget? Adjust for next week."
         },
         {
             type: "complete",
@@ -815,13 +1112,51 @@ const lessons = {
         },
         {
             type: "content",
+            title: "Why You Need One",
+            content: "40% of Americans can't cover a $400 emergency without selling something or borrowing.\n\nDebt is the emergency fund's evil twin. Without savings, you are forced into high-interest debt when things go wrong."
+        },
+        {
+            type: "content",
             title: "How Much is Enough?",
-            content: "Aim for 3 to 6 months of essential living expenses. If your bare-bones monthly budget is $2,000, aim for $6,000 - $12,000.\n\nStart small: $1,000 is a great first milestone."
+            content: "Aim for **3 to 6 months of essential living expenses**.\n\nNote: 'Essential'. If you lose your job, you won't be eating steak dinners. Calculate your 'bare bones' budget (Rent + Food + Utilities) x 3."
+        },
+        {
+            type: "content",
+            title: "Starter Fund",
+            content: "3-6 months is daunting. Start with a micro-goal: **$1,000**.\n\nThis covers most minor car repairs or appliance replacements. Get here as fast as you can—sell things, work overtime, pause investing."
+        },
+        {
+            type: "quiz",
+            title: "Fund Logic",
+            question: "What is an appropriate use of your emergency fund?",
+            options: [
+                "A flash sale on electronics",
+                "Your car's transmission fails",
+                "Down payment for a vacation",
+                "Investing in crypto"
+            ],
+            correctAnswer: 1,
+            explanation: "An emergency fund is for UNEXPECTED, URGENT, and NECESSARY expenses. A car failure fits all three."
         },
         {
             type: "content",
             title: "Where to Keep It?",
-            content: "Keep it liquid (accessible) but separate from your checking account. A High-Yield Savings Account (HYSA) is ideal because it earns interest while keeping the money safe."
+            content: "Keep it liquid (accessible) but separate. A **High-Yield Savings Account (HYSA)** is ideal.\n\nIt's separate enough that you won't accidentally spend it on pizza, but accessible within 1-2 days if you need it."
+        },
+        {
+            type: "content",
+            title: "What if I Need to Use It?",
+            content: "Use it! That's what it's there for. Don't feel guilty.\n\nBUT, your #1 priority immediately becomes refilling it. Pause other goals until your shield is back up."
+        },
+        {
+            type: "content",
+            title: "Job Loss Protection",
+            content: "In a recession, finding a new job can take 6 months. If you work in a volatile industry (tech startups, sales), aim for the higher end (6-9 months) of expenses."
+        },
+        {
+            type: "tip",
+            title: "Windfalls",
+            content: "Get a tax refund? A birthday check? Put 50-100% of it into your emergency fund until it's fully funded."
         },
         {
             type: "complete",
@@ -834,12 +1169,32 @@ const lessons = {
         {
             type: "intro",
             title: "Reading Your Credit Report",
-            content: "Your credit report contains the data that determines your score. Errors are common, so you need to know how to check it."
+            content: "Your credit report contains the data that determines your score. Errors are common, so you need to know how to check it like a detective."
         },
         {
             type: "content",
             title: "The Big Three",
-            content: "There are three major credit bureaus: Equifax, Experian, and TransUnion. You are entitled to a free report from each of them every year at AnnualCreditReport.com."
+            content: "There are three major credit bureaus: **Equifax, Experian, and TransUnion**.\n\nYou are entitled to a free report from EACH of them every week (temporarily post-COVID) or at least annually at **AnnualCreditReport.com**."
+        },
+        {
+            type: "content",
+            title: "Section 1: Personal Info",
+            content: "Check your name, address, and SSN. \n\nWarning Sign: An address you never lived at. This could mean someone opened an account in your name using a different address."
+        },
+        {
+            type: "content",
+            title: "Section 2: Credit Accounts (Trade Lines)",
+            content: "This lists all your credit cards, loans, and mortgages.\n\nCheck:\n• **Status**: Should be 'Current' or 'Paid as Agreed'.\n• **Balance**: Does it look accurate?\n• **Ownership**: Is this actually your account?"
+        },
+        {
+            type: "content",
+            title: "Section 3: Inquiries",
+            content: "Who has looked at your report?\n\n• **Hard Inquiries**: Stay for 2 years. If you see a hard inquiry from a bank you didn't apply to, it's a huge Red Flag for identity theft."
+        },
+        {
+            type: "content",
+            title: "Section 4: Public Records/Collections",
+            content: "The scary stuff. Bankruptcies, tax liens, or debts sold to collection agencies.\n\nThese hurt your score the most. Ensure they are accurate. If a debt is old (usually 7+ years), it should fall off."
         },
         {
             type: "quiz",
@@ -847,12 +1202,27 @@ const lessons = {
             question: "How often can you get a free credit report from the major bureaus?",
             options: [
                 "Once a lifetime",
-                "Once a year",
+                "Once a year (or weekly recently)",
                 "Only when denied credit",
                 "Every month"
             ],
             correctAnswer: 1,
-            explanation: "By law, you can access your report for free once every 12 months from each bureau."
+            explanation: "By law, you can access your report for free once every 12 months, though recent policies allow for more frequent free checks."
+        },
+        {
+            type: "content",
+            title: "Dispute Process",
+            content: "Found an error? You can dispute it online with the bureau. They must investigate within 30 days. If the lender can't prove the debt is yours, the bureau MUST remove it."
+        },
+        {
+            type: "content",
+            title: "Credit Monitoring Services",
+            content: "Services like Credit Karma offer free monitoring. They alert you instantly if a new inquiry or account appears. Highly recommended for peace of mind."
+        },
+        {
+            type: "content",
+            title: "Freezing Your Credit",
+            content: "The ultimate protection. You can 'Freeze' your credit for free. This locks your report so NO ONE can open a new account in your name.\n\nWhen you need to apply for something, you temporarily 'Thaw' it using a PIN."
         },
         {
             type: "complete",
